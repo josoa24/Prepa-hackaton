@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\Publication;
+
 
 class UserController extends BaseController
 {
@@ -29,6 +31,10 @@ class UserController extends BaseController
     }
     public function home()
     {
-        echo "TONGASOA";
+        $publicationModel = new Publication();
+        $totalPublications = $publicationModel->countAll();
+        return view('home', [
+            'totalPublications' => $totalPublications,
+        ]);
     }
 }

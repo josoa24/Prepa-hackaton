@@ -49,14 +49,21 @@ class CreateIColabUser extends Migration
                 'constraint' => 255,
                 'null'       => false
             ],
+
+            'profile_picture' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => true
+            ],
         ]);
 
         $this->forge->addPrimaryKey('user_id');
-        $this->forge->createTable('i_colab_user');
+        $this->forge->createTable('user');
+
     }
 
     public function down()
     {
-        $this->forge->dropTable('i_colab_user');
+        $this->forge->dropTable('user');
     }
 }

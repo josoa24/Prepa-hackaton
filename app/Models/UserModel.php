@@ -6,8 +6,9 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-  protected $table      = 'i_colab_user';
-  protected $primaryKey = 'user_id';
+    protected $table      = 'user';
+
+    protected $primaryKey = 'user_id';
 
   protected $allowedFields = [
     'last_name',
