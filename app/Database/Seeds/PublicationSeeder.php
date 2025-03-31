@@ -9,7 +9,7 @@ class PublicationSeeder extends Seeder
     public function run()
     {
         $data = [];
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 200; $i++) {
             $data[] = [
                 'id_user' => rand(1, 10),
                 'title' => "Publication Title $i",

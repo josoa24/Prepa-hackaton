@@ -7,6 +7,46 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
     <script src="<?= base_url('assets/js/home.js') ?>" defer></script>
     <title>Toutes collaborations</title>
+    <style>
+        /* From Uiverse.io by barisdogansutcu */
+        .loading-spinner {
+            width: 3.25em;
+            transform-origin: center;
+            animation: rotate4 2s linear infinite;
+        }
+
+        .loading-spinner circle {
+            fill: none;
+            stroke: hsl(214, 97%, 59%);
+            stroke-width: 2;
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+            animation: dash4 1.5s ease-in-out infinite;
+        }
+
+        @keyframes rotate4 {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash4 {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 90, 200;
+                stroke-dashoffset: -35px;
+            }
+
+            100% {
+                stroke-dashoffset: -125px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -57,56 +97,111 @@
     <nav class="filtre-container">
         <p> 10000 Publications </p>
         <button class="filtre">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
+            <svg class="svgc" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
                 <path d="M440-120v-240h80v80h320v80H520v80h-80Zm-320-80v-80h240v80H120Zm160-160v-80H120v-80h160v-80h80v240h-80Zm160-80v-80h400v80H440Zm160-160v-240h80v80h160v80H680v80h-80Zm-480-80v-80h400v80H120Z" />
             </svg>
             Filtres
         </button>
     </nav>
-    <section class="pub">
+    <section class="pub" id="publications"></section>
+    <div id="loading" style="text-align: center; display: none;">
+        <svg class="loading-spinner" viewBox="25 25 50 50">
+            <circle r="20" cy="50" cx="50"></circle>
+        </svg>
+    </div>
 
-        <?php for ($i = 0; $i < 10; $i++): ?>
-            <div class="pub-container">
-                <div class="top-image">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
-                        <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
-                    </svg>
-                    <img src="<?= base_url('assets/images/land.jpg') ?>" alt="" class="publication">
-                </div>
-                <div class="bottom-pub">
-                    <div class="head-section">
-                        <nav class="left-user">
-                            <img class="publisher" src="<?= base_url('assets/images/Josoa.jpg') ?>" alt="">
-                            <h2>Josoa_Raz</h2>
+    <script>
+        let offset = 0;
+        const limit = 12; // Number of publications to load per batch
+        const container = document.getElementById('publications');
+        const loading = document.getElementById('loading');
+        let isLoading = false; // Flag to prevent multiple fetch requests
+
+        // Function to load publications
+        async function loadPublications() {
+            if (isLoading) return; // Prevent multiple simultaneous requests
+            isLoading = true;
+            loading.style.display = 'block';
+            try {
+                await new Promise(resolve => setTimeout(resolve, 2000)); // Add 2-second delay
+                const response = await fetch(`/fetchPublications?offset=${offset}&limit=${limit}`);
+                const publications = await response.json();
+
+                if (!Array.isArray(publications)) {
+                    console.error('Unexpected response format:', publications);
+                    loading.style.display = 'none';
+                    isLoading = false;
+                    return;
+                }
+
+                publications.forEach(publication => {
+                    const div = document.createElement('div');
+                    div.className = 'pub-container';
+                    div.innerHTML = `
+                        <div class="top-image">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
-                                <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0-83-31.5-156T763-197q-54-54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
                             </svg>
-                        </nav>
-                        <aside class="date-container">
-                            12 Mai 2025
-                        </aside>
-                    </div>
-                    <div class="content-publication">
-                        <p>Mitady olona hiaraka hanao foot </p>
-                        <div class="btn">
-                            <button>
-                                Participer
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
-                                    <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
-                                </svg> -->
-
-                            </button>
-                            <div class="right">
-                                <progress value="70" max="100"></progress>
-                                <p>60%</p>
+                            ${publication.photos && publication.photos.length > 0 
+                                ? `<img src="${publication.photos[0]}" alt="Photo" class="publication">` 
+                                : `<img src="<?= base_url('assets/images/land.jpg') ?>" alt="Default Image" class="publication">`}
+                        </div>
+                        <div class="bottom-pub">
+                            <div class="head-section">
+                                <nav class="left-user">
+                                    <img class="publisher" src="<?= base_url('assets/images/Josoa.jpg') ?>" alt="">
+                                    <h2>${publication.title}</h2>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
+                                        <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0-83-31.5-156T763-197q-54-54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                    </svg>
+                                </nav>
+                                <aside class="date-container">
+                                    ${publication.date_publication}
+                                </aside>
+                            </div>
+                            <div class="content-publication">
+                                <p>${publication.content}</p>
+                                <div class="btn">
+                                    <button>
+                                        Participer
+                                    </button>
+                                    <div class="right">
+                                        <progress value="${publication.completion_percentage || 0}" max="100"></progress>
+                                        <p>${Math.round(publication.completion_percentage || 0)}%</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        <?php endfor; ?>
+                    `;
+                    container.appendChild(div);
+                });
 
-    </section>
+                offset += limit;
+                loading.style.display = 'none';
+
+                // Stop infinite scroll if no more publications
+                if (publications.length < limit) {
+                    window.removeEventListener('scroll', handleScroll);
+                }
+            } catch (error) {
+                console.error('Error loading publications:', error);
+                loading.style.display = 'none';
+            } finally {
+                isLoading = false; // Reset the flag
+            }
+        }
+
+        // Scroll handler
+        function handleScroll() {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                loadPublications();
+            }
+        }
+
+        // Load initial publications and set up scroll listener
+        loadPublications();
+        window.addEventListener('scroll', handleScroll);
+    </script>
 </body>
 
 </html>
