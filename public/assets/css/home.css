@@ -368,7 +368,32 @@ progress {
 
 }
 
-.pop-up-container form,
+.type-publication {
+    height: 40px;
+    padding: 0 20px;
+}
+
+.type-publication button {
+    margin: 0;
+    width: 130px;
+    height: 35px;
+    border-radius: 5px;
+    color: #0a0a0a;
+    transition: 0.3s ease-in-out;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -ms-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    margin-top: 0 !important;
+    background: transparent;
+}
+
+.type-publication button:hover {
+    background: transparent;
+    cursor: pointer;
+}
+
+.pop-up-container .container-form,
 .categorie-container {
     width: 45%;
     height: 90%;
@@ -396,7 +421,7 @@ progress {
     color: #333232;
 }
 
-.pop-up-container form {
+.pop-up-container .container-form {
     overflow: auto;
     animation: show 0.6s ease-in-out;
     -webkit-animation: show 0.6s ease-in-out;
@@ -505,7 +530,7 @@ progress {
     height: 45px;
 }
 
-.pop-up-container button {
+.pop-up-container form button {
     margin: 21px;
     width: 130px;
     height: 35px;
@@ -519,7 +544,7 @@ progress {
     -o-transition: 0.3s ease-in-out;
 }
 
-.pop-up-container button:hover {
+.pop-up-container form button:hover {
     cursor: pointer;
     background: #0266a0;
 

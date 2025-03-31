@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
                 'country'        => 'France',
                 'email'          => 'marie.dupont@example.fr',
                 'phone_number'   => '+33 6 12 34 56 78',
-                'password'       => password_hash('marie2023', PASSWORD_BCRYPT),
+                'password'       => 'marie2023', 
                 'profile_picture'=> 'marie.jpg'
             ],
             [
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'country'        => 'Vietnam',
                 'email'          => 'minh.nguyen@example.vn',
                 'phone_number'   => '+84 90 123 4567',
-                'password'       => password_hash('minhsecure', PASSWORD_BCRYPT),
+                'password'       => 'minhsecure',
                 'profile_picture'=> 'minh.png'
             ],
             [
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 'country'        => 'Spain',
                 'email'          => 'carlos.garcia@example.es',
                 'phone_number'   => '+34 600 123 456',
-                'password'       => password_hash('carlospass', PASSWORD_BCRYPT),
+                'password'       => 'carlospass', 
                 'profile_picture'=> 'carlos.jpg'
             ],
             [
@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
                 'country'        => 'USA',
                 'email'          => 'emily.smith@example.com',
                 'phone_number'   => '+1 555-123-4567',
-                'password'       => password_hash('emilypass', PASSWORD_BCRYPT),
+                'password'       => 'emilypass',
                 'profile_picture'=> 'emily.png'
             ],
             [
@@ -56,7 +56,7 @@ class UserSeeder extends Seeder
                 'country'        => 'India',
                 'email'          => 'raj.kumar@example.in',
                 'phone_number'   => '+91 98765 43210',
-                'password'       => password_hash('rajsecure', PASSWORD_BCRYPT),
+                'password'       => 'rajsecure',
                 'profile_picture'=> 'raj.jpg'
             ],
         ];

@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= base_url('assets/css/home.css') ?>">
+    <link rel="icon" type="image/png" href="<?= base_url('assets/icons/favicon-96x96.png') ?>" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="<?= base_url('assets/icons/favicon.svg') ?>" />
+    <link rel="shortcut icon" href="<?= base_url('assets/icons/favicon.ico') ?>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/icons/apple-touch-icon.png') ?>" />
+    <link rel="manifest" href="<?= base_url('assets/icons/site.webmanifest') ?>" />
     <script src="<?= base_url('assets/js/home.js') ?>" defer></script>
+    <script src="<?= base_url('assets/js/ajax.js') ?>" defer></script>
     <title>Toutes collaborations</title>
 
     <style>
-        /* From Uiverse.io by barisdogansutcu */
         .loading-spinner {
             width: 3.25em;
             transform-origin: center;
@@ -50,52 +55,127 @@
     </style>
 </head>
 
-<body>
+<body data-base="<?= base_url() ?>">
     <div class="pop-up-container" style="display: none;">
-        <form action="">
+        <div class="container-form">
             <h2>Collaborer avec tout le monde
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
                     <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                 </svg>
             </h2>
-            <p>Créez des projets, partagez vos idées et collaborez avec d'autres passionnés.</p>
-            <div class="form-group">
-                <label for="titre">Titre</label>
-                <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+            <div class="type-publication">
+                <button class="contribution">
+                    Contribution
+                </button>
+                <button class="evenement">
+                    Evenement
+                </button>
+                <button class="donation">
+                    Donation
+                </button>
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="categorie">Catégorie</label>
-                <select id="categorie" name="categorie" required>
-                    <option value="" disabled selected>Choisissez une catégorie</option>
-                    <option value="sport">Sport</option>
-                    <option value="musique">Musique</option>
-                    <option value="art">Art</option>
-                    <option value="technologie">Technologie</option>
-                    <option value="autre">Autre</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="photo">Photo</label>
-                <input type="file" id="photo" name="photo" accept="image/*" required>
-            </div>
-            <div class="preview-container" id="preview-container" style="display: none;">
-                <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
-            </div>
-            <div class="form-group">
-                <label for="date">Date</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-            <button type="submit">Soumettre</button>
-        </form>
+            <form class="contribution" action="/storePublication" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="typepub" value="3">
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorie">Catégorie</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option value="sport">Sport</option>
+                        <option value="musique">Musique</option>
+                        <option value="art">Art</option>
+                        <option value="technologie">Technologie</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                </div>
+                <div class="preview-container" id="preview-container" style="display: none;">
+                    <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+            <form class="evenement" action="/storePublication" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorie">Catégorie</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option value="sport">Sport</option>
+                        <option value="musique">Musique</option>
+                        <option value="art">Art</option>
+                        <option value="technologie">Technologie</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                </div>
+                <div class="preview-container" id="preview-container" style="display: none;">
+                    <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+            <form class="donation" action="/storePublication" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorie">Catégorie</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option value="sport">Sport</option>
+                        <option value="musique">Musique</option>
+                        <option value="art">Art</option>
+                        <option value="technologie">Technologie</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept=".png" required>
+                </div>
+                <div class="preview-container" id="preview-container" style="display: none;">
+                    <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="date">Montant</label>
+                    <input type="number" id="date" name="date" required>
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+
     </div>
 
 
     <div class="pop-up-container-filter" style="display: none;">
-
         <div class="categorie-container">
             <h2>Filtrer par catégorie
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
@@ -187,7 +267,7 @@
             loading.style.display = 'block';
             try {
                 await new Promise(resolve => setTimeout(resolve, 2000)); // Add 2-second delay
-                const response = await fetch(`/fetchPublications?offset=${offset}&limit=${limit}`);
+                const response = await fetch(`<?= base_url('fetchPublications') ?>?offset=${offset}&limit=${limit}`);
                 const publications = await response.json();
 
                 if (!Array.isArray(publications)) {
