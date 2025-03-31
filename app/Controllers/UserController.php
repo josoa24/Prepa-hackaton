@@ -23,6 +23,7 @@ class UserController extends BaseController
     $email = $this->request->getPost('email');
     $password = $this->request->getPost('password');
     $user = $this->userModel->validLogin($email, $password);
+
     if ($user) {
       return redirect()->to('/home');
     } else {

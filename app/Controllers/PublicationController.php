@@ -14,45 +14,6 @@ class PublicationController extends BaseController
     return view('publication'); // Vue principale
   }
 
-  public function search()
-  {
-    $search = $this->request->getGet('search') ?? false;
-    $page = $this->request->getGet('offset') ?? 0;
-    $limit = $this->request->getGet('limit') ?? 12;
-
-    if(!$search) {
-      return $this->index();
-    }
-
-    $publicationModel = new Publication();
-    $publications = $publicationModel->getPublicationsWithPhotosAndStatusSearch($page, $limit, $search);
-
-    $groupedPublications = [];
-    foreach ($publications as $publication) {
-      $id = $publication['id'];
-      if (!isset($groupedPublications[$id])) {
-        $groupedPublications[$id] = $publication;
-        $groupedPublications[$id]['photos'] = [];
-      }
-      if ($publication['photo_link']) {
-        $groupedPublications[$id]['photos'][] = $publication['photo_link'];
-      }
-    }
-
-    // Ajout des informations utilisateur dans la réponse
-    foreach ($groupedPublications as &$publication) {
-      $publication['user'] = [
-        'first_name' => $publication['first_name'],
-        'last_name' => $publication['last_name'],
-        'email' => $publication['email'],
-        'profile_picture' => $publication['profile_picture'],
-      ];
-      unset($publication['first_name'], $publication['last_name'], $publication['email'], $publication['profile_picture']);
-    }
-
-    return $this->response->setJSON(array_values($groupedPublications));
-  }
-
   public function fetchPublications()
   {
     $offset = $this->request->getGet('offset') ?? 0;
@@ -142,6 +103,7 @@ class PublicationController extends BaseController
         'date_publication' => date('Y-m-d H:i:s'),
         'date_evenement' => $date,
         'type' => $type,
+        'forme' => 1,
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
@@ -164,6 +126,7 @@ class PublicationController extends BaseController
         'date_publication' => date('Y-m-d H:i:s'),
         'date_evenement' => null,
         'type' => $type,
+        'forme' => 2,
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
@@ -193,6 +156,7 @@ class PublicationController extends BaseController
         'date_publication' => date('Y-m-d H:i:s'),
         'date_evenement' => null,
         'type' => $type,
+        'forme' => 3,
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
@@ -209,5 +173,44 @@ class PublicationController extends BaseController
     }
 
     return redirect()->to('/home')->with('error', 'Publication failed');
+  }
+
+  public function search()
+  {
+    $search = $this->request->getGet('search') ?? false;
+    $page = $this->request->getGet('offset') ?? 0;
+    $limit = $this->request->getGet('limit') ?? 12;
+
+    if (!$search) {
+      return $this->index();
+    }
+
+    $publicationModel = new Publication();
+    $publications = $publicationModel->getPublicationsWithPhotosAndStatusSearch($page, $limit, $search);
+
+    $groupedPublications = [];
+    foreach ($publications as $publication) {
+      $id = $publication['id'];
+      if (!isset($groupedPublications[$id])) {
+        $groupedPublications[$id] = $publication;
+        $groupedPublications[$id]['photos'] = [];
+      }
+      if ($publication['photo_link']) {
+        $groupedPublications[$id]['photos'][] = $publication['photo_link'];
+      }
+    }
+
+    // Ajout des informations utilisateur dans la réponse
+    foreach ($groupedPublications as &$publication) {
+      $publication['user'] = [
+        'first_name' => $publication['first_name'],
+        'last_name' => $publication['last_name'],
+        'email' => $publication['email'],
+        'profile_picture' => $publication['profile_picture'],
+      ];
+      unset($publication['first_name'], $publication['last_name'], $publication['email'], $publication['profile_picture']);
+    }
+
+    return $this->response->setJSON(array_values($groupedPublications));
   }
 }

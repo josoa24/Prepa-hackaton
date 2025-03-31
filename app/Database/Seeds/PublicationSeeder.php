@@ -18,6 +18,7 @@ class PublicationSeeder extends Seeder
                 'date_publication' => date('Y-m-d H:i:s', strtotime("-" . rand(1, 30) . " days")),
                 'date_evenement' => rand(0, 1) ? date('Y-m-d H:i:s', strtotime("+" . rand(1, 30) . " days")) : null,
                 'type'=> ['Event', 'News', 'Update'][rand(0, 2)],
+                'forme' => rand(1, 3),
             ];
         }
 
