@@ -41,6 +41,13 @@ class UserController extends BaseController
       'user' => $user,
     ]);
   }
+
+  public function logout()
+  {
+    session()->destroy();
+    return redirect()->to('/')->with('success', 'Logged out successfully');
+  }
+
   public function publication()
   {
     $user = $this->userModel->find(session()->get('user_id'));

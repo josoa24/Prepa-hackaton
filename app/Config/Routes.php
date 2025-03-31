@@ -6,11 +6,13 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->get('/', 'UserController::login');
-$routes->post('validate_login', 'UserController::validate_login');
-$routes->get('/home', 'UserController::home');
-$routes->get('/fetchPublications', 'PublicationController::fetchPublications');
-$routes->get('/participate', 'ColaborationController::participate');
-$routes->post('/storePublication', 'PublicationController::storePublication');
-$routes->get('/sendMail', 'EmailController::sendEmail');
-$routes->get('/publication','UserController::publication');
+$routes->get('/', 'UserController::login', ['as' => 'login']);
+$routes->get('/logout', 'UserController::logout', ['as' => 'logout']);
+$routes->post('/logout', 'UserController::logout', ['as' => 'logout']);;
+$routes->post('/validate_login', 'UserController::validate_login');
+$routes->get('/home', 'UserController::home', ['filter' => 'auth']);
+$routes->get('/fetchPublications', 'PublicationController::fetchPublications', ['filter' => 'auth']);
+$routes->get('/participate', 'ColaborationController::participate', ['filter' => 'auth']);
+$routes->post('/storePublication', 'PublicationController::storePublication', ['filter' => 'auth']);
+$routes->get('/sendMail', 'EmailController::sendEmail', ['filter' => 'auth']);
+$routes->get('/search', 'PublicationController::search', ['filter' => 'auth']);

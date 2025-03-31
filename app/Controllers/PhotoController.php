@@ -24,7 +24,16 @@ class PhotoController extends BaseController
     $response->setHeader('Content-Type', mime_content_type($filePath));
     $response->setHeader('Content-Length', filesize($filePath));
     $response->setHeader('Content-Disposition', 'inline; filename="' . basename($filePath) . '"');
-    $response->setBody(fopen($filePath, 'rb'));
+
+    $file = fopen($filePath, 'rb');
+    if ($file) {
+      while (!feof($file))
+        $response->appendBody(fread($file, 12192));
+      fclose($file);
+    } else {
+      $this->response->setStatusCode(ResponseInterface::HTTP_INTERNAL_SERVER_ERROR, 'Could not open file');
+      return $this->response;
+    }
 
     return $response;
   }
