@@ -1,7 +1,6 @@
 create database i_colab;
 
 use i_colab;
-
 create table
     i_colab_user (
         user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -11,7 +10,8 @@ create table
         country VARCHAR(50),
         email VARCHAR(100) UNIQUE NOT NULL,
         phone_number VARCHAR(20),
-        password VARCHAR(255) NOT NULL
+        password VARCHAR(255) NOT NULL,
+        profile_picture VARCHAR(255)
     );
 
 
