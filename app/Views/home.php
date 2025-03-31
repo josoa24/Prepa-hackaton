@@ -196,7 +196,7 @@
     <nav class="left-nav">
       <img src="<?= base_url('assets/images/LOGO-ICOLAB.png') ?>" alt="" class="logo-i-colab">
       <div class="search-container">
-        <input type="text" placeholder="Rechercher">
+        <input type="text" placeholder="Rechercher" id="search-input">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
           <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
         </svg>
@@ -260,14 +260,37 @@
     const container = document.getElementById('publications');
     const loading = document.getElementById('loading');
     let isLoading = false; // Flag to prevent multiple fetch requests
+    const searchURL = '<?= base_url('search') ?>';
+    const normalURL = '<?= base_url('fetchPublications') ?>';
+    let urlToUse = normalURL;
+
+    function changeURL(newURL) {
+      urlToUse = newURL;
+      offset = 0; // Reset offset when changing URL
+      container.innerHTML = ''; // Clear current publications
+      loadPublications(); // Load publications from the new URL
+    }
+
+    changeURL(`${normalURL}?nouseparameter`);
+
+    document.getElementById('search-input').addEventListener('change', function() {
+      const searchTerm = this.value.trim();
+      if (searchTerm) {
+        changeURL(`${searchURL}?search=${encodeURIComponent(searchTerm)}`);
+      } else {
+        changeURL(`${normalURL}?nouseparameter`);
+      }
+    });
 
     async function loadPublications() {
       if (isLoading) return;
+
       isLoading = true;
       loading.style.display = 'block';
+
       try {
         await new Promise(resolve => setTimeout(resolve, 2000)); // Add 2-second delay
-        const response = await fetch(`<?= base_url('fetchPublications') ?>?offset=${offset}&limit=${limit}`);
+        const response = await fetch(`${urlToUse}&offset=${offset}&limit=${limit}`);
         const publications = await response.json();
 
         if (!Array.isArray(publications)) {
@@ -286,7 +309,7 @@
                     <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
                 </svg>
                 ${publication.photos && publication.photos.length > 0 
-                    ? `<img src="<?= base_url('uploaded/?file=') ?>${encodeURI(publication.photos[0])}" alt="Photo" class="publication">` 
+                    ? `<img src="<?= base_url('uploaded/?file=') ?>${encodeURIComponent(publication.photos[0])}" alt="Photo" class="publication">` 
                     : `<img src="<?= base_url('assets/images/land.jpg') ?>" alt="Default Image" class="publication">`}
             </div>
             <div class="bottom-pub">
