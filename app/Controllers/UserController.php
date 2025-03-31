@@ -26,7 +26,7 @@ class UserController extends BaseController
         if ($user) {
             return redirect()->to('/home');
         } else {
-            return redirect()->back()->with('error', 'Invalid email or password');
+            return redirect('/');
         }
     }
     public function home()

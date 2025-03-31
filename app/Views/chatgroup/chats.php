@@ -46,7 +46,7 @@
     <div class="chat-sidebar">
       <div class="chat-list">
         <?php foreach ($groups as $group): ?>
-          <a href="<?= route_to('chat', $group['id']) ?>" class="chat-item-nav" data-name="<?= strtolower($group['name']) ?>" style="text-decoration: none;">
+          <a href="<?= base_url('chats/' . $group['id']) ?>" class="chat-item-nav" data-name="<?= strtolower($group['name']) ?>" style="text-decoration: none;">
             <div class="chat-item">
               <div class="avatar"><?= strtoupper($group['name'][0]) ?></div>
               <div class="chat-info">
