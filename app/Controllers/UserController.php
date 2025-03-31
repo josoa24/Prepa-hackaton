@@ -47,4 +47,18 @@ class UserController extends BaseController
     session()->destroy();
     return redirect()->to('/')->with('success', 'Logged out successfully');
   }
+
+  public function publication()
+  {
+    $user = $this->userModel->find(session()->get('user_id'));
+    $publicationModel = new Publication();
+    $totalPublications = $publicationModel->countAll();
+    $publications = $publicationModel->getUserPublications($user['user_id']);
+    // print_r($publications);
+    return view('publication_user', [
+      'publications' => $publications,
+      'totalPublications' => $totalPublications,
+      'user' => $user,
+    ]);
+  }
 }
