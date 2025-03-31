@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="photo">Photo</label>
-                <input type="file" id="photo" name="photo" accept="image/*" required>
+                <input type="file" id="photo" name="photo" accept="image/*" multiple required>
             </div>
             <div class="preview-container" id="preview-container" style="display: none;">
                 <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
