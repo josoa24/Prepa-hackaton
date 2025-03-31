@@ -53,6 +53,7 @@ values
         '555-555-5555',
         'mypassword789'
     );
+    drop table i_colab_colaboration;
 create table
     i_colab_colaboration (
         id INT AUTO_INCREMENT PRIMARY KEY,

@@ -11,6 +11,8 @@ function sendParticipation(id1, id2) {
     .then((data) => {
       if (data.success) {
         if (action === "join") {
+          const popupEmail = document.querySelector(".pop-up-email");
+          popupEmail.style.display = "flex";
           button.textContent = "Annuler";
           button.style.background = "#ee7272";
           button.style.color = "white";
