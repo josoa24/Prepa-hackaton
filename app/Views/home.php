@@ -208,8 +208,8 @@
                         <div class="bottom-pub">
                             <div class="head-section">
                                 <nav class="left-user">
-                                    <img class="publisher" src="<?= base_url('assets/images/Josoa.jpg') ?>" alt="">
-                                    <h2>${publication.title}</h2>
+                                    <img class="publisher" src="<?= base_url() ?>${publication.photo_link}" alt="">
+                                    <h2>${publication.user.first_name} ${publication.user.last_name}</h2>
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
                                         <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0-83-31.5-156T763-197q-54-54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
                                     </svg>
@@ -219,7 +219,7 @@
                                 </aside>
                             </div>
                             <div class="content-publication">
-                                <p>${publication.content}</p>
+                                <p>${publication.title}</p>
                                 <div class="btn">
                                     <button>
                                         Participer

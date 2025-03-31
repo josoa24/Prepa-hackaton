@@ -11,16 +11,15 @@ class PublicationSeeder extends Seeder
         $data = [];
         for ($i = 1; $i <= 200; $i++) {
             $data[] = [
-                'id_user' => rand(1, 10),
-                'title' => "Publication Title $i",
-                'content' => "This is the content of publication $i.",
-                'description' => "Publication description $i.",
-                'date_publication' => date('Y-m-d H:i:s', strtotime("+$i days")),
-                'date_evenement' => $i % 2 === 0 ? date('Y-m-d H:i:s', strtotime("+$i days +2 hours")) : null,
+                'id_user' => rand(1, 5),
+                'title' => "Event $i: " . ['Charity Run', 'Food Drive', 'Community Cleanup', 'Art Workshop', 'Tech Meetup'][rand(0, 4)],
+                'content' => "Join us for Event $i! This is a great opportunity to make a difference in your community.",
+                'description' => "Details about Event $i. Don't miss out!",
+                'date_publication' => date('Y-m-d H:i:s', strtotime("-" . rand(1, 30) . " days")),
+                'date_evenement' => rand(0, 1) ? date('Y-m-d H:i:s', strtotime("+" . rand(1, 30) . " days")) : null,
             ];
         }
 
-        // Insert data into the Publication table
         $this->db->table('Publication')->insertBatch($data);
     }
 }
