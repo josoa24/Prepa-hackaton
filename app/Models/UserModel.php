@@ -88,9 +88,9 @@ class UserModel extends Model
 
   public function getChatGroups($user_id)
   {
-    $groupIds = array_unique(array_map(fn($e) => $e['group_id'], new GroupMemberModel()->where('user_id', $user_id)
+    $groupIds = array_unique(array_map(fn($e) => $e['group_id'], (new GroupMemberModel())->where('user_id', $user_id)
       ->findAll()));
-    $groups = new GroupModel()->findAll();
+    $groups = (new GroupModel())->findAll();
 
     return array_filter($groups, fn($group) => in_array($group['id'], $groupIds));
   }
