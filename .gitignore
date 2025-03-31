@@ -170,3 +170,5 @@ logs/*
 # Project Specific
 #-------------------------
 # Add any project-specific exclusions here
+
+app/Config/App.php

@@ -159,7 +159,7 @@
                 </div>
                 <div class="form-group">
                     <label for="photo">Photo</label>
-                    <input type="file" id="photo" name="photo" accept=".png" required>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
                 </div>
                 <div class="preview-container" id="preview-container" style="display: none;">
                     <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
@@ -305,7 +305,7 @@
                             <div class="content-publication">
                                 <p>${publication.title}</p>
                                 <div class="btn">
-                                    <button>
+                                    <button id="btn-1-1" onclick="sendParticipation(1,1)">
                                         Participer
                                     </button>
                                     <div class="right">
