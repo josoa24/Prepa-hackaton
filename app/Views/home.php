@@ -50,6 +50,66 @@
 </head>
 
 <body>
+    <div class="pop-up-container" style="display: none;">
+        <form action="">
+            <h2>Collaborer avec tout le monde
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+            </h2>
+            <p>Créez des projets, partagez vos idées et collaborez avec d'autres passionnés.</p>
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="categorie">Catégorie</label>
+                <select id="categorie" name="categorie" required>
+                    <option value="" disabled selected>Choisissez une catégorie</option>
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="art">Art</option>
+                    <option value="technologie">Technologie</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+            </div>
+            <div class="preview-container" id="preview-container" style="display: none;">
+                <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <button type="submit">Soumettre</button>
+        </form>
+    </div>
+
+    <div class="pop-up-container-filter" style="display: none;">
+        <div class="categorie-container">
+            <h2>Filtrer par catégorie
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+            </h2>
+            <div class="categorie-btn">
+                <button data-category="all">Toute catégorie</button>
+                <button data-category="sport">Sport</button>
+                <button data-category="musique">Musique</button>
+                <button data-category="art">Art</button>
+                <button data-category="technologie">Technologie</button>
+                <button data-category="autre">Autre</button>
+            </div>
+        </div>
+    </div>
+
     <header class="head-acceuil">
         <nav class="left-nav">
             <img src="<?= base_url('assets/images/LOGO-ICOLAB.png') ?>" alt="" class="logo-i-colab">
@@ -95,7 +155,7 @@
         </aside>
     </header>
     <nav class="filtre-container">
-        <p> 10000 Publications </p>
+        <p><?= $totalPublications ?> Publications</p>
         <button class="filtre">
             <svg class="svgc" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
                 <path d="M440-120v-240h80v80h320v80H520v80h-80Zm-320-80v-80h240v80H120Zm160-160v-80H120v-80h160v-80h80v240h-80Zm160-80v-80h400v80H440Zm160-160v-240h80v80h160v80H680v80h-80Zm-480-80v-80h400v80H120Z" />
@@ -117,9 +177,8 @@
         const loading = document.getElementById('loading');
         let isLoading = false; // Flag to prevent multiple fetch requests
 
-        // Function to load publications
         async function loadPublications() {
-            if (isLoading) return; // Prevent multiple simultaneous requests
+            if (isLoading) return;
             isLoading = true;
             loading.style.display = 'block';
             try {
@@ -179,7 +238,6 @@
                 offset += limit;
                 loading.style.display = 'none';
 
-                // Stop infinite scroll if no more publications
                 if (publications.length < limit) {
                     window.removeEventListener('scroll', handleScroll);
                 }
@@ -187,18 +245,16 @@
                 console.error('Error loading publications:', error);
                 loading.style.display = 'none';
             } finally {
-                isLoading = false; // Reset the flag
+                isLoading = false;
             }
         }
 
-        // Scroll handler
         function handleScroll() {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
                 loadPublications();
             }
         }
 
-        // Load initial publications and set up scroll listener
         loadPublications();
         window.addEventListener('scroll', handleScroll);
     </script>
