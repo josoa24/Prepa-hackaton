@@ -1,5 +1,4 @@
 document.querySelector(".button-user")?.addEventListener("click", function () {
-
   let toolsContainer = document.querySelector(".tools-container");
   toolsContainer.style.display =
     toolsContainer.style.display === "block" ? "none" : "block";
@@ -40,7 +39,6 @@ document.querySelector(".filtre")?.addEventListener("click", function () {
       toolsContainer.style.display = "flex";
       document.body.style.overflow = "hidden";
     }
-
   }
 });
 
@@ -56,7 +54,6 @@ document
   });
 
 document.getElementById("photo")?.addEventListener("change", function (event) {
-
   const file = event.target.files[0];
   const preview = document.getElementById("imagePreview");
 
@@ -64,7 +61,6 @@ document.getElementById("photo")?.addEventListener("change", function (event) {
     const reader = new FileReader();
 
     reader.onload = function (e) {
-
       if (preview) {
         preview.src = e.target.result;
         preview.style.display = "block";
@@ -74,7 +70,6 @@ document.getElementById("photo")?.addEventListener("change", function (event) {
 
     reader.readAsDataURL(file);
   } else {
-
     if (preview) {
       document.getElementById("preview-container").style.display = "none";
       preview.src = "";
@@ -83,16 +78,20 @@ document.getElementById("photo")?.addEventListener("change", function (event) {
   }
 });
 
-document.querySelectorAll(".categorie-btn button")?.forEach(button => {
+document.querySelectorAll(".categorie-btn button")?.forEach((button) => {
   button.addEventListener("click", function () {
     const category = this.getAttribute("data-category");
+    document.querySelectorAll(".categorie-btn button").forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    this.classList.add("active");
     filterPublications(category);
   });
 });
 
 function filterPublications(category) {
   const publications = document.querySelectorAll(".pub-container");
-  publications.forEach(pub => {
+  publications.forEach((pub) => {
     if (category === "all" || pub.dataset.category === category) {
       pub.style.display = "block";
     } else {
