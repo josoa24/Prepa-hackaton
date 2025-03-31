@@ -92,7 +92,7 @@
     const sendButton = document.getElementById('send');
 
     // Replace with your WebSocket server URL
-    const socket = new WebSocket('ws://localhost:8081');
+    const socket = new WebSocket('ws://192.168.1.145:8081');
 
     socket.addEventListener('open', () => {
       socket.send(JSON.stringify({

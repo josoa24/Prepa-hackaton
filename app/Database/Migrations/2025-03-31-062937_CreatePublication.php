@@ -47,7 +47,6 @@ class CreatePublication extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_user', 'user', 'user_id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('Publication');
     }
 
