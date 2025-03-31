@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/icons/apple-touch-icon.png') ?>" />
     <link rel="manifest" href="<?= base_url('assets/icons/site.webmanifest') ?>" />
     <script src="<?= base_url('assets/js/home.js') ?>" defer></script>
+    <script src="<?= base_url('assets/js/ajax.js') ?>" defer></script>
     <title>Toutes collaborations</title>
 
     <style>
@@ -54,52 +55,126 @@
     </style>
 </head>
 
-<body>
+<body data-base="<?= base_url() ?>">
     <div class="pop-up-container" style="display: none;">
-        <form action="">
+        <div class="container-form">
             <h2>Collaborer avec tout le monde
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
                     <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                 </svg>
             </h2>
-            <p>Créez des projets, partagez vos idées et collaborez avec d'autres passionnés.</p>
-            <div class="form-group">
-                <label for="titre">Titre</label>
-                <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+            <div class="type-publication">
+                <button class="contribution">
+                    Contribution
+                </button>
+                <button class="evenement">
+                    Evenement
+                </button>
+                <button class="donation">
+                    Donation
+                </button>
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="categorie">Catégorie</label>
-                <select id="categorie" name="categorie" required>
-                    <option value="" disabled selected>Choisissez une catégorie</option>
-                    <option value="sport">Sport</option>
-                    <option value="musique">Musique</option>
-                    <option value="art">Art</option>
-                    <option value="technologie">Technologie</option>
-                    <option value="autre">Autre</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="photo">Photo</label>
-                <input type="file" id="photo" name="photo" accept="image/*" required>
-            </div>
-            <div class="preview-container" id="preview-container" style="display: none;">
-                <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
-            </div>
-            <div class="form-group">
-                <label for="date">Date</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-            <button type="submit">Soumettre</button>
-        </form>
+            <form class="contribution" action="">
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorie">Catégorie</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option value="sport">Sport</option>
+                        <option value="musique">Musique</option>
+                        <option value="art">Art</option>
+                        <option value="technologie">Technologie</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                </div>
+                <div class="preview-container" id="preview-container" style="display: none;">
+                    <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+            <form class="evenement" action="">
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorie">Catégorie</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option value="sport">Sport</option>
+                        <option value="musique">Musique</option>
+                        <option value="art">Art</option>
+                        <option value="technologie">Technologie</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                </div>
+                <div class="preview-container" id="preview-container" style="display: none;">
+                    <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+            <form class="donation" action="">
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categorie">Catégorie</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option value="sport">Sport</option>
+                        <option value="musique">Musique</option>
+                        <option value="art">Art</option>
+                        <option value="technologie">Technologie</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                </div>
+                <div class="preview-container" id="preview-container" style="display: none;">
+                    <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="date">Montant</label>
+                    <input type="number" id="date" name="date" required>
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+
     </div>
 
 
     <div class="pop-up-container-filter" style="display: none;">
-
         <div class="categorie-container">
             <h2>Filtrer par catégorie
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
