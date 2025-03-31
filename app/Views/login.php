@@ -56,20 +56,54 @@
         </div>
     </div>
 
-    <script>
-        function togglePassword() {
-            const passwordField = document.getElementById('password');
-            const eyeIcon = document.querySelector('.show-password');
+    <form action="<?= base_url('validate_login') ?>" method="post" id="loginForm">
+      <div class="form-group">
+        <label class="input-label" for="email">Email</label>
+        <input type="email"
+          name="email"
+          id="email"
+          class="input-field"
+          placeholder="user@icolab.com"
+          value="user$@example.com"
+          required>
+      </div>
 
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
-            } else {
-                passwordField.type = 'password';
-                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
-            }
-        }
-    </script>
+      <div class="form-group">
+        <label class="input-label" for="password">Mot de passe</label>
+        <div class="password-container">
+          <input type="password"
+            id="password"
+            class="input-field"
+            placeholder="••••••••"
+            value="password123"
+            name="password"
+            required>
+          <i class="fas fa-eye show-password" onclick="togglePassword()"></i>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Se connecter</button>
+    </form>
+
+    <div class="additional-links">
+      <a href="#">Mot de passe oublié ?</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const eyeIcon = document.querySelector('.show-password');
+
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        passwordField.type = 'password';
+        eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+  </script>
 </body>
 
 </html>
