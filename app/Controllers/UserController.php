@@ -47,6 +47,7 @@ class UserController extends BaseController
     $publicationModel = new Publication();
     $totalPublications = $publicationModel->countAll();
     $publications = $publicationModel->getUserPublications($user['user_id']);
+    // print_r($publications);
     return view('publication_user', [
       'publications' => $publications,
       'totalPublications' => $totalPublications,

@@ -285,6 +285,7 @@
                 }
 
                 publications.forEach(publication => {
+                    console.log("hello");
                     const div = document.createElement('div');
                     div.className = 'pub-container';
                     if (publication.forme == 2) {
