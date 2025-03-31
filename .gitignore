@@ -132,9 +132,6 @@ nb-configuration.xml
 #environment
 .env
 
-#config
-app/config/*
-
 #-------------------------
 # Node.js / Frontend
 #-------------------------

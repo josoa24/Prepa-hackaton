@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Publiclation extends Model
+class Don extends Model
 {
-    protected $table            = 'publiclations';
+    protected $table            = 'dons';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

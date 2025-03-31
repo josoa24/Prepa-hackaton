@@ -32,6 +32,19 @@ class CreatePublication extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'title' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => false,
+            ],
+            'content' => [
+                'type' => 'TEXT',
+                'null' => false,
+            ],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('Publication');
