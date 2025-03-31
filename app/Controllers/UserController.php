@@ -40,4 +40,10 @@ class UserController extends BaseController
       'user' => $user,
     ]);
   }
+
+  public function logout()
+  {
+    session()->destroy();
+    return redirect()->to('/')->with('success', 'Logged out successfully');
+  }
 }

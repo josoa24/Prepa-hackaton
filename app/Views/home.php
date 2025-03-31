@@ -183,7 +183,7 @@
         </svg>
       </h2>
       <div class="categorie-btn">
-        <button data-category="all">Toute catégorie</button>
+        <button data-category="all" class="active">Toute catégorie</button>
         <button data-category="sport">Sport</button>
         <button data-category="musique">Musique</button>
         <button data-category="art">Art</button>
@@ -226,7 +226,7 @@
             </svg>
             <a href="<?= base_url('settings') ?>">Parametre</a>
           </button>
-          <button>
+          <button onclick="location.href='<?= base_url('logout') ?>'">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
               <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
             </svg>
@@ -273,10 +273,11 @@
 
     changeURL(`${normalURL}?nouseparameter`);
 
-    document.getElementById('search-input').addEventListener('change', function() {
+    document.getElementById('search-input').addEventListener('input', function() {
       const searchTerm = this.value.trim();
       if (searchTerm) {
         changeURL(`${searchURL}?search=${encodeURIComponent(searchTerm)}`);
+        loadPublications();
       } else {
         changeURL(`${normalURL}?nouseparameter`);
       }
@@ -315,7 +316,7 @@
             <div class="bottom-pub">
                 <div class="head-section">
                     <nav class="left-user">
-                        <img class="publisher" src="<?= base_url() ?>${publication.photo_link}" alt="">
+                        <img class="publisher" src="<?= base_url('assets/images/') ?>${encodeURIComponent(publication.user.profile_picture)}" alt="">
                         <h2>${publication.user.first_name} ${publication.user.last_name}</h2>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
                             <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0-83-31.5-156T763-197q-54-54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
@@ -328,7 +329,7 @@
                 <div class="content-publication">
                     <p>${publication.title}</p>
                     <div class="btn">
-                        <button id="btn-1-1" onclick="sendParticipation(1,1)">
+                        <button id="btn-${publication.id}-<?= $user['user_id'] ?>" onclick="sendParticipation(${publication.id},<?= $user['user_id'] ?>)">
                             Participer
                         </button>
                         <div class="right">
