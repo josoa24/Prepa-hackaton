@@ -10,6 +10,80 @@
 </head>
 
 <body>
+    <div class="pop-up-container" style="display: none;">
+        <form action="">
+            <h2>Collaborer avec tout le monde
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+            </h2>
+            <p>Créez des projets, partagez vos idées et collaborez avec d'autres passionnés.</p>
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Entrez la description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="categorie">Catégorie</label>
+                <select id="categorie" name="categorie" required>
+                    <option value="" disabled selected>Choisissez une catégorie</option>
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="art">Art</option>
+                    <option value="technologie">Technologie</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+            </div>
+            <div class="preview-container" id="preview-container" style="display: none;">
+                <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <button type="submit">Soumettre</button>
+        </form>
+    </div>
+
+    <div class="pop-up-container-filter " style="display: none;">
+        <div class="categorie-container">
+            <h2>Filtrer par catégorie
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+            </h2>
+            <div class="categorie-btn">
+                <button>
+                    Toute categorie
+                </button>
+                <button>
+                    Sport
+                </button>
+                <button>
+                    Musique
+                </button>
+                <button>
+                    Art
+                </button>
+                <button>
+                    Technologie
+                </button>
+                <button>
+                    Autre
+                </button>
+            </div>
+        </div>
+    </div>
+
+
     <header class="head-acceuil">
         <nav class="left-nav">
             <img src="<?= base_url('assets/images/LOGO-ICOLAB.png') ?>" alt="" class="logo-i-colab">
@@ -42,7 +116,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
                             <path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
                         </svg>
-                        Parametre
+                        <a href="<?= base_url('settings') ?>">Parametre</a>
                     </button>
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
