@@ -13,3 +13,4 @@ $routes->get('/fetchPublications', 'PublicationController::fetchPublications');
 $routes->get('/participate', 'ColaborationController::participate');
 $routes->post('/storePublication', 'PublicationController::storePublication');
 $routes->get('/sendMail', 'EmailController::sendEmail');
+$routes->get('/publication','UserController::publication');

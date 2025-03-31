@@ -41,4 +41,16 @@ class UserController extends BaseController
       'user' => $user,
     ]);
   }
+  public function publication()
+  {
+    $user = $this->userModel->find(session()->get('user_id'));
+    $publicationModel = new Publication();
+    $totalPublications = $publicationModel->countAll();
+    $publications = $publicationModel->getUserPublications($user['user_id']);
+    return view('publication_user', [
+      'publications' => $publications,
+      'totalPublications' => $totalPublications,
+      'user' => $user,
+    ]);
+  }
 }

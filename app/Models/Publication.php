@@ -67,4 +67,23 @@ class Publication extends Model
 
         return $query->findAll();
     }
+
+    public function getUserPublications(int $user_id)
+    {
+        return $this->select('Publication.*, photos.lien AS photo_link, 
+                              (CASE 
+                                  WHEN progressions.status = 0 THEN "en cours" 
+                                  ELSE "terminer" 
+                              END) AS progression_status,
+                              SUM(dons.montant) AS total_dons,
+                              (SUM(dons.montant) / progressions.but) * 100 AS completion_percentage')
+                    ->join('photos', 'photos.id_publication = Publication.id', 'left')
+                    ->join('progressions', 'progressions.id_publication = Publication.id', 'left')
+                    ->join('dons', 'dons.id_publication = Publication.id', 'left')
+                    ->join('user', 'user.user_id = Publication.id_user', 'left')
+                    ->where('Publication.id_user', $user_id)
+                    ->groupBy('Publication.id, progressions.but, progressions.status, user.user_id')
+                    ->orderBy('Publication.created_at', 'DESC')
+                    ->findAll();
+    }
 }
