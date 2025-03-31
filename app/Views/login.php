@@ -23,6 +23,7 @@
       <!-- <p style="color: #6b7280; margin-top: 0.5rem;">Collaboration intelligente</p> -->
     </div>
 
+
     <form action="<?= base_url('validate_login') ?>" method="post" id="loginForm">
       <div class="form-group">
         <label class="input-label" for="email">Email</label>

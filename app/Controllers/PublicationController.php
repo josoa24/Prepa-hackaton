@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Publication;
+use \App\Models\Don;
+use \App\Models\Photo;
 
 class PublicationController extends BaseController
 {
@@ -45,5 +47,131 @@ class PublicationController extends BaseController
         }
 
         return $this->response->setJSON(array_values($groupedPublications));
+    }
+
+    public function storePublication()
+    {
+        $typepub = $this->request->getPost('typepub');
+        $titre = $this->request->getPost('titre');
+        $description = $this->request->getPost('description');
+        $type = $this->request->getPost('categorie');
+        $date = $this->request->getPost('date');
+        $id_user = $this->request->getPost('id_user') ?? 1;
+        $maxdonation = $this->request->getPost('maxdonation') ?? 0;
+
+        // Handle photo upload
+        $photoFile = $this->request->getFile('photo');
+        if (!$photoFile) {
+            log_message('error', 'No photo file received');
+            return $this->response->setJSON(['error' => 'No photo file provided'])->setStatusCode(400);
+        }
+
+        if (!$photoFile->isValid()) {
+            log_message('error', 'Invalid photo file: ' . $photoFile->getErrorString());
+            return $this->response->setJSON(['error' => 'Invalid photo file'])->setStatusCode(400);
+        }
+
+        if ($photoFile->hasMoved()) {
+            return $this->response->setJSON(['error' => 'Photo file has already been moved'])->setStatusCode(400);
+        }
+
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($photoFile->getExtension(), $allowedExtensions)) {
+            return $this->response->setJSON(['error' => 'Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed'])->setStatusCode(400);
+        }
+
+        if ($photoFile->getSize() > 2 * 1024 * 1024) { // 2MB limit
+            return $this->response->setJSON(['error' => 'File size exceeds the 2MB limit'])->setStatusCode(400);
+        }
+
+        try {
+            $photoName = $photoFile->getRandomName();
+            $photoFile->move(WRITEPATH . 'uploads', $photoName);
+            $photoPath = '/uploads/' . $photoName;
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['error' => 'Failed to upload photo: ' . $e->getMessage()])->setStatusCode(500);
+        }
+
+        if ($typepub == 1) {
+            // Handle evenement publication
+            $publicationModel = new Publication();
+            $data = [
+                'id_user' => $id_user,
+                'title' => $titre,
+                'content' => $description,
+                'description' => $description,
+                'date_publication' => date('Y-m-d H:i:s'),
+                'date_evenement' => $date,
+                'type' => $type,
+            ];
+            if ($publicationModel->insert($data)) {
+                $id_publication = $publicationModel->insertID();
+                $photoModel = new Photo();
+                $photoData = [
+                    'id_publication' => $id_publication,
+                    'lien' => $photoPath,
+                ];
+                $photoModel->insert($photoData);
+                return redirect()->to('/home');
+            }
+        }
+        elseif ($typepub == 2) {
+            // Handle donation publication
+            $publicationModel = new Publication();
+            $data = [
+                'id_user' => $id_user,
+                'title' => $titre,
+                'content' => $description,
+                'description' => $description,
+                'date_publication' => date('Y-m-d H:i:s'),
+                'date_evenement' => null,
+                'type' => $type,
+            ];
+            if ($publicationModel->insert($data)) {
+                $id_publication = $publicationModel->insertID();
+                $photoModel = new Photo();
+                $photoData = [
+                    'id_publication' => $id_publication,
+                    'lien' => $photoPath,
+                ];
+                $photoModel->insert($photoData);
+                $donationModel = new Don();
+                $donationData = [
+                    'id_publication' => $id_publication,
+                    'montant' => $maxdonation,
+                    'date_don' => date('Y-m-d H:i:s'),
+                ];
+                $donationModel->insert($donationData);
+                return redirect()->to('/home');
+            }
+        }
+        elseif ($typepub == 3) {
+            // Handle contribution publication
+            $publicationModel = new Publication();
+            $data = [
+                'id_user' => $id_user,
+                'title' => $titre,
+                'content' => $description,
+                'description' => $description,
+                'date_publication' => date('Y-m-d H:i:s'),
+                'date_evenement' => null,
+                'type' => $type,
+            ];
+            if ($publicationModel->insert($data)) {
+                $id_publication = $publicationModel->insertID();
+                $photoModel = new Photo();
+                $photoData = [
+                    'id_publication' => $id_publication,
+                    'lien' => $photoPath,
+                ];
+                $photoModel->insert($photoData);
+                return redirect()->to('/home');
+            }
+        }
+        else {
+            return $this->response->setJSON(['error' => 'Invalid publication type'])->setStatusCode(400);
+        }
+
+        return redirect()->to('/home')->with('error', 'Publication failed');
     }
 }
