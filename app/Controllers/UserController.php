@@ -29,6 +29,6 @@ class UserController extends BaseController
     }
     public function home()
     {
-        echo "TONGASOA";
+        return view('home');
     }
 }
