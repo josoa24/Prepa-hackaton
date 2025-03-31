@@ -18,7 +18,7 @@ class ChatGroupController extends BaseController
       return redirect()->to('/login');
     }
 
-    $groups = new UserModel()->getChatGroups($user_id);
+    $groups = (new UserModel())->getChatGroups($user_id);
 
     return view('chatgroup/chats.php', compact('groups'));
   }
@@ -27,19 +27,19 @@ class ChatGroupController extends BaseController
   {
     $id = intval($id);
     $user_id = session()->get('user_id');
-    $user = new UserModel()->find($user_id);
+    $user = (new UserModel())->find($user_id);
 
-    $group = new GroupModel()->find($id);
+    $group = (new GroupModel())->find($id);
 
     if (!$group)
       return redirect()->to('/chats');
 
     $users = [];
 
-    foreach (new UserModel()->findAll() as $user_)
+    foreach ((new UserModel())->findAll() as $user_)
       $users[$user_['user_id']] = $user_;
 
-    $groupMemberModel = array_map(fn($e) => $e['user_id'], new GroupMemberModel()->where('group_id', $id)->findAll());
+    $groupMemberModel = array_map(fn($e) => $e['user_id'], (new GroupMemberModel())->where('group_id', $id)->findAll());
 
     $finalUsers = [];
     foreach ($groupMemberModel as $userid)
@@ -48,7 +48,7 @@ class ChatGroupController extends BaseController
 
     $users = $finalUsers;
 
-    $messages = new MessageModel()->where('group_id', $id)->findAll();
+    $messages = (new MessageModel())->where('group_id', $id)->findAll();
 
     $db = \Config\Database::connect();
     $query = $db->query('SELECT canvas_json FROM canvas_states WHERE group_id = ? ORDER BY timestamp DESC LIMIT 1', [$id]);
