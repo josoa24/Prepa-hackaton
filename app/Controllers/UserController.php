@@ -26,17 +26,21 @@ class UserController extends BaseController
     if ($user) {
       return redirect()->to('/home');
     } else {
-      return redirect()->back()->with('error', 'Invalid email or password');
+      return redirect('/');
     }
   }
   public function home()
   {
-    $user = $this->userModel->find(session()->get('user_id'));
     $publicationModel = new Publication();
     $totalPublications = $publicationModel->countAll();
     return view('home', [
       'totalPublications' => $totalPublications,
-      'user' => $user,
     ]);
+  }
+
+  public function logout()
+  {
+    session()->destroy();
+    return redirect()->to('/');
   }
 }

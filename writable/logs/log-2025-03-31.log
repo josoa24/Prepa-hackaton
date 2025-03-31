@@ -43,3 +43,504 @@ in APPPATH\Models\UserModel.php on line 81.
  5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-31 15:32:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 16:25:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-31 16:47:08 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(25): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 17:08:14 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(52): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 17:16:08 --> ErrorException: Undefined variable $json
+[Method: POST, Route: participate]
+in APPPATH\Controllers\ColaborationController.php on line 19.
+ 1 APPPATH\Controllers\ColaborationController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\xampp\\htdocs\\Prepa-hackaton\\app\\Controllers\\ColaborationController.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-31 17:20:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-31 17:20:27 --> ParseError: syntax error, unexpected token "->"
+[Method: GET, Route: chats]
+in APPPATH\Controllers\ChatGroupController.php on line 21.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\Prepa-hackaton\\app\\Controllers\\ChatGroupController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ChatGroupController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ChatGroupController')
+ 4 SYSTEMPATH\Debug\Toolbar\Collectors\Routes.php(85): ReflectionMethod->__construct('\\App\\Controllers\\ChatGroupController', 'index')
+ 5 SYSTEMPATH\Debug\Toolbar\Collectors\BaseCollector.php(228): CodeIgniter\Debug\Toolbar\Collectors\Routes->display()
+ 6 SYSTEMPATH\Debug\Toolbar.php(95): CodeIgniter\Debug\Toolbar\Collectors\BaseCollector->getAsArray()
+ 7 SYSTEMPATH\Debug\Toolbar.php(390): CodeIgniter\Debug\Toolbar->run(1743441627.667646, 0.063, Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\RedirectResponse))
+ 8 SYSTEMPATH\Filters\DebugToolbar.php(44): CodeIgniter\Debug\Toolbar->prepare(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\RedirectResponse))
+ 9 SYSTEMPATH\Filters\Filters.php(278): CodeIgniter\Filters\DebugToolbar->after(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\RedirectResponse), null)
+10 SYSTEMPATH\Filters\Filters.php(364): CodeIgniter\Filters\Filters->runAfter([...])
+11 SYSTEMPATH\CodeIgniter.php(407): CodeIgniter\Filters\Filters->runRequired('after')
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->runRequiredAfterFilters(Object(CodeIgniter\Filters\Filters))
+13 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-31 17:23:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-31 17:23:59 --> ParseError: syntax error, unexpected token "->", expecting ")"
+[Method: GET, Route: /]
+in APPPATH\Models\UserModel.php on line 91.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\Prepa-hackaton\\app\\Models\\UserModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\UserModel')
+ 3 APPPATH\Controllers\UserController.php(14): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\UserModel')
+ 4 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\UserController->__construct()
+ 5 SYSTEMPATH\CodeIgniter.php(498): CodeIgniter\CodeIgniter->createController()
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-31 17:25:50 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'razherana'@'localhost' (using password: NO) in C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'razherana', Object(SensitiveParameterValue), 'hackaton_icolla...', 3306, '', 0)
+#1 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Prepa-hackaton\app\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Prepa-hackaton\app\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@exampl...', 'password123')
+#6 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+#7 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\Prepa-hackaton\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\Prepa-hackaton\app\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\Prepa-hackaton\app\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@exampl...', 'password123')
+#5 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+#6 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#7 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\Prepa-hackaton\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-03-31 17:25:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+[Method: POST, Route: validate_login]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+AND `password` = :password:', [...], false)
+ 3 APPPATH\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@example.com', 'password123')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-31 17:26:54 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'i-collab' in C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'i-collab', 3306, '', 0)
+#1 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Prepa-hackaton\app\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Prepa-hackaton\app\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@exampl...', 'password123')
+#6 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+#7 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\Prepa-hackaton\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'i-collab' in C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\Prepa-hackaton\app\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\Prepa-hackaton\app\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@exampl...', 'password123')
+#5 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+#6 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#7 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\Prepa-hackaton\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-03-31 17:26:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'i-collab'
+[Method: POST, Route: validate_login]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+AND `password` = :password:', [...], false)
+ 3 APPPATH\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@example.com', 'password123')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-31 17:27:06 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'i-colab' in C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'i-colab', 3306, '', 0)
+#1 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Prepa-hackaton\app\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Prepa-hackaton\app\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@exampl...', 'password123')
+#6 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+#7 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\Prepa-hackaton\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'i-colab' in C:\xampp\htdocs\Prepa-hackaton\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\Prepa-hackaton\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\Prepa-hackaton\app\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\Prepa-hackaton\app\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@exampl...', 'password123')
+#5 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+#6 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#7 C:\xampp\htdocs\Prepa-hackaton\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\Prepa-hackaton\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\Prepa-hackaton\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-03-31 17:27:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'i-colab'
+[Method: POST, Route: validate_login]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+AND `password` = :password:', [...], false)
+ 3 APPPATH\Models\UserModel.php(80): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\UserController.php(25): App\Models\UserModel->validLogin('john.doe@example.com', 'password123')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->validate_login()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-31 17:27:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:27:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:29:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:29:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:29:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:30:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:30:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:31:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:31:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:31:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:31:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:32:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:37:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:37:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:38:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:40:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:42:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:42:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:43:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:43:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:43:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:44:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:44:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:44:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 17:44:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:14:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:14:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:15:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:15:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:15:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:15:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:16:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:16:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:16:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:16:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:16:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:16:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:21:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 18:30:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-31 18:42:20 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(43): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:42:54 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(43): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:49:41 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(38): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:50:18 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(38): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:50:35 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(38): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:51:58 --> ArgumentCountError: Too few arguments to function App\Models\ParticipationModel::getParticipation(), 1 passed in C:\xampp\htdocs\Prepa-hackaton\app\Controllers\ColaborationController.php on line 38 and exactly 2 expected
+[Method: GET, Route: participate]
+in APPPATH\Models\ParticipationModel.php on line 18.
+ 1 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->getParticipation([...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:52:19 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 4 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:53:09 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 4 APPPATH\Controllers\ColaborationController.php(39): App\Models\ParticipationModel->insertParticipation([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:53:52 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 4 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:54:29 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 4 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:54:30 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 4 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:54:30 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 4 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:54:58 --> CodeIgniter\Database\Exceptions\DataException: There is no primary key defined when trying to make insert.
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 358.
+ 1 SYSTEMPATH\Model.php(358): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey('insert')
+ 2 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 3 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 5 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:55:13 --> TypeError: Illegal offset type in isset or empty
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 4 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:55:26 --> CodeIgniter\Database\Exceptions\DataException: There is no primary key defined when trying to make insert.
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 358.
+ 1 SYSTEMPATH\Model.php(358): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey('insert')
+ 2 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 3 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 5 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:56:15 --> CodeIgniter\Database\Exceptions\DataException: There is no primary key defined when trying to make insert.
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 358.
+ 1 SYSTEMPATH\Model.php(358): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey('insert')
+ 2 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 3 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 5 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:56:17 --> CodeIgniter\Database\Exceptions\DataException: There is no primary key defined when trying to make insert.
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 358.
+ 1 SYSTEMPATH\Model.php(358): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey('insert')
+ 2 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 3 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 5 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:56:40 --> CodeIgniter\Database\Exceptions\DataException: There is no primary key defined when trying to make insert.
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 358.
+ 1 SYSTEMPATH\Model.php(358): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey('insert')
+ 2 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 3 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 5 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 18:56:41 --> CodeIgniter\Database\Exceptions\DataException: There is no primary key defined when trying to make insert.
+[Method: GET, Route: participate]
+in SYSTEMPATH\Model.php on line 358.
+ 1 SYSTEMPATH\Model.php(358): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey('insert')
+ 2 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 3 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Models\ParticipationModel.php(32): CodeIgniter\Model->insert([...])
+ 5 APPPATH\Controllers\ColaborationController.php(38): App\Models\ParticipationModel->insertParticipation([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

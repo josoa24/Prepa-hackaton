@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.addEventListener("keydown", (e) => {
     // Check if "Delete" or "Backspace" key is pressed
-    if (e.code === "Delete" || e.code === "Backspace") {
+    if (e.code === "Delete") {
       const activeObject = canvas.getActiveObject();
 
       // Delete the selected object

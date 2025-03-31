@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class ParticipationModel extends Model
 {
     protected $table      = 'i_colab_colaboration';
-    protected $primaryKey = ['id_publication', 'id_user'];
-    protected $useAutoIncrement = false;
+    protected $primaryKey = 'id';
+    protected $useAutoIncrement = true; // Set to true to match the AUTO_INCREMENT column
 
     protected $allowedFields = [
         'id_publication',
