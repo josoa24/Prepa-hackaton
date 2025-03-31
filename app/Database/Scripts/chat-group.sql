@@ -1,5 +1,5 @@
 -- Group table to store chat groups
-CREATE TABLE `Group` (
+CREATE TABLE `groups` (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -8,7 +8,8 @@ CREATE TABLE `Group` (
 );
 
 -- Junction table for group members (many-to-many relationship)
-CREATE TABLE GroupMember (
+CREATE TABLE `group_members` (
+    id INT PRIMARY KEY AUTO_INCREMENT,
     group_id INT NOT NULL,
     user_id INT NOT NULL,
     role ENUM('admin', 'member') DEFAULT 'member',
@@ -16,7 +17,7 @@ CREATE TABLE GroupMember (
 );
 
 -- Message table to store chat messages
-CREATE TABLE Message (
+CREATE TABLE `messages` (
     id INT PRIMARY KEY AUTO_INCREMENT,
     group_id INT NOT NULL,
     user_id INT NOT NULL,
@@ -25,6 +26,6 @@ CREATE TABLE Message (
     reply_to INT
 );
 
-CREATE INDEX idx_group_member ON GroupMember(group_id, user_id);
-CREATE INDEX idx_message_group ON Message(group_id);
-CREATE INDEX idx_message_timestamp ON Message(timestamp);
+CREATE INDEX idx_group_member ON group_members(group_id, user_id);
+CREATE INDEX idx_message_group ON messages(group_id);
+CREATE INDEX idx_message_timestamp ON messages(timestamp);
