@@ -31,6 +31,7 @@ class Routing extends BaseRouting
     public array $routeFiles = [
         APPPATH . 'Config/Routes.php',
         APPPATH . 'Routes/ChatGroup.php',
+        APPPATH . 'Routes/Uploaded.php',
     ];
 
     /**
