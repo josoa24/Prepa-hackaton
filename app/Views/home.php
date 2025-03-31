@@ -56,7 +56,9 @@
 </head>
 
 <body data-base="<?= base_url() ?>">
-    <div class="pop-up-container" style="display: none;">
+
+  
+<div class="pop-up-container" style="display: none;">
         <div class="container-form">
             <h2>Collaborer avec tout le monde
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
@@ -245,6 +247,7 @@
             </div>
         </aside>
     </header>
+   
     <nav class="filtre-container">
 
         <p><?= $totalPublications ?> Publications</p>
@@ -287,7 +290,6 @@
                 }
 
                 publications.forEach(publication => {
-                    console.log("hello");
                     const div = document.createElement('div');
                     div.className = 'pub-container';
                     if (publication.forme == 2) {
@@ -316,7 +318,7 @@
                 <div class="content-publication">
                     <p>${publication.title}</p>
                     <div class="btn">
-                        <button id="btn-1-1" onclick="sendParticipation(1,1)">
+                        <button id="btn-${publication.id}-${<?= $user['user_id'] ?>}" onclick="sendParticipation(${publication.id}, <?= $user['user_id'] ?>)">
                             Donner
                         </button>
                         <div class="right">
@@ -354,7 +356,7 @@
                 <div class="content-publication">
                     <p>${publication.title}</p>
                     <div class="btn">
-                        <button id="btn-1-1" onclick="sendParticipation(1,1)">
+                        <button id="btn-${publication.id}-${<?= $user['user_id'] ?>}" onclick="sendParticipation(${publication.id}, <?= $user['user_id'] ?>)">
                             Participer
                         </button>
                         <div class="right">
@@ -390,7 +392,7 @@
                 <div class="content-publication">
                     <p>${publication.title}</p>
                     <div class="btn">
-                        <button id="btn-1-1" onclick="sendParticipation(1,1)">
+                        <button id="btn-${publication.id}-${<?= $user['user_id'] ?>}" onclick="sendParticipation(${publication.id}, <?= $user['user_id'] ?>)">
                             Collaborer
                         </button>
                     </div>
