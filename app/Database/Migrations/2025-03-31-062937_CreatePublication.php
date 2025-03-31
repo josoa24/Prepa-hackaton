@@ -43,8 +43,13 @@ class CreatePublication extends Migration
             ],
             'content' => [
                 'type' => 'TEXT',
-                'null' => false,
+                'null' => true,
             ],
+            'type' =>[
+                'type'=>'VARCHAR',
+                'constraint'=> 50,
+                'null'=> false,
+            ]
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('Publication');

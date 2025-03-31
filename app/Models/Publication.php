@@ -12,7 +12,7 @@ class Publication extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user', 'title', 'content', 'description', 'date_publication', 'date_evenement', 'created_at'];
+    protected $allowedFields    = ['id_user', 'title', 'content', 'description', 'date_publication', 'date_evenement', 'created_at', 'type'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

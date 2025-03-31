@@ -74,7 +74,8 @@
                     Donation
                 </button>
             </div>
-            <form class="contribution" action="">
+            <form class="contribution" action="/storePublication" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="typepub" value="3">
                 <div class="form-group">
                     <label for="titre">Titre</label>
                     <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
@@ -103,7 +104,7 @@
                 </div>
                 <button type="submit">Soumettre</button>
             </form>
-            <form class="evenement" action="">
+            <form class="evenement" action="/storePublication" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="titre">Titre</label>
                     <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
@@ -136,7 +137,7 @@
                 </div>
                 <button type="submit">Soumettre</button>
             </form>
-            <form class="donation" action="">
+            <form class="donation" action="/storePublication" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="titre">Titre</label>
                     <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
