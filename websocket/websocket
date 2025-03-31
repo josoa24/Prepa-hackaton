@@ -12,11 +12,14 @@ require $paths->systemDirectory . '/Boot.php';
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
+$count = 0;
+
 class ChatServer implements MessageComponentInterface
 {
   protected $clients;
   protected $mapped_chat_ids;
   protected $db;
+  protected $canvasStates;
 
   public function __construct()
   {
@@ -30,13 +33,11 @@ class ChatServer implements MessageComponentInterface
     $this->clients[$conn->resourceId] = $conn;
   }
 
-  public function onMessage(ConnectionInterface $from, $msg)
+  private function handleMessageChat($data, $from)
   {
-    $data = json_decode($msg, true);
-    $data['group_id'] = $data['group_id'] ?? [];
-
-    if (isset($data['type']) && $data['type'] == 'connect') {
+    if (isset($data['type']) && $data['type'] === 'connect') {
       $this->mapped_chat_ids[$data['group_id']][$data['id']] = $from->resourceId;
+      $this->mapped_chat_ids[$data['group_id']] = $this->mapped_chat_ids[$data['group_id']] ?? [];
 
       echo "Chat id : {$data['id']} + {$data['group_id']} connected with resourceId {$from->resourceId}\n";
       return;
@@ -45,19 +46,21 @@ class ChatServer implements MessageComponentInterface
     $user_id = $data['id'];
     $group_id = $data['group_id'];
     $message = $data['message'];
+    $timestamp = date('Y-m-d H:i:s');
     $reply_id = $data['reply_id'] ?? null;
 
-    $this->db->prepare('INSERT INTO Message (group_id, user_id, content, timestamp, reply_to) VALUES (?, ?, ?, ?, ?)')->execute([
+    $this->db->prepare('INSERT INTO messages (group_id, user_id, content, timestamp, reply_to) VALUES (?, ?, ?, ?, ?)')->execute([
       $group_id,
       $user_id,
       $message,
-      date('Y-m-d H:i:s'),
+      $timestamp,
       $reply_id
     ]);
 
     $message_id = $this->db->lastInsertId();
 
-    foreach ($this->mapped_chat_ids[$group_id] as $userId => $resourceId)
+    foreach ($this->mapped_chat_ids[$group_id] as $userId => $resourceId) {
+      echo "Sent by $userId - $user_id\n";
       if ($userId != $user_id) {
         $this->clients[$resourceId]->send(json_encode([
           'type' => 'message_receive',
@@ -65,21 +68,117 @@ class ChatServer implements MessageComponentInterface
           'group_id' => $group_id,
           'message_id' => $message_id,
           'message' => $message,
-          'timestamp' => date('Y-m-d H:i:s'),
+          'timestamp' => $timestamp,
           'reply_id' => $reply_id
         ]));
       }
+    }
+  }
+
+  private function handleDrawing($data, $from)
+  {
+    $group_id = $data['group_id'] ?? null;
+    $user_id = $data['id'] ?? null;
+
+    if (!$group_id || !isset($this->mapped_chat_ids[$group_id])) {
+      return;
+    }
+
+    global $count;
+    $count++;
+    echo "Req : {$count}\n";
+
+    // Handle different drawing events
+    switch ($data['action']) {
+      case 'object_added':
+        $objectData = $data['object'];
+        $this->broadcastDrawingUpdate($group_id, $user_id, 'object_added', $objectData);
+        break;
+
+      case 'object_modified':
+        $objectData = $data['object'];
+        $this->broadcastDrawingUpdate($group_id, $user_id, 'object_modified', $objectData);
+        break;
+
+      case 'object_removed':
+        $objectId = $data['objectId'];
+        $this->broadcastDrawingUpdate($group_id, $user_id, 'object_removed', ['id' => $objectId]);
+        break;
+
+      case 'canvas_clear':
+        $this->broadcastDrawingUpdate($group_id, $user_id, 'canvas_clear');
+        break;
+
+      case 'canvas_save':
+        $this->canvasStates[$group_id] = $data['canvas_json'];
+        $this->broadcastDrawingUpdate($group_id, $user_id, 'canvas_save', ['canvas_json' => $data['canvas_json']]);
+
+        $this->saveCanvasToDatabase($group_id, $data['canvas_json']);
+        break;
+    }
+  }
+
+  private function broadcastDrawingUpdate($group_id, $sender_id, $action, $data = null)
+  {
+    $message = [
+      'type' => 'drawing_update',
+      'action' => $action,
+      'sender_id' => $sender_id
+    ];
+
+    if ($data) {
+      $message['data'] = $data;
+    }
+
+    foreach ($this->mapped_chat_ids[$group_id] as $userId => $resourceId) {
+      if ($userId != $sender_id) {
+        $this->clients[$resourceId]->send(json_encode($message));
+      }
+    }
+  }
+
+  private function saveCanvasToDatabase($group_id, $canvas_json)
+  {
+    try {
+      $stmt = $this->db->prepare('INSERT INTO canvas_states (group_id, canvas_json, timestamp) 
+                                   VALUES (?, ?, ?) 
+                                   ON DUPLICATE KEY UPDATE canvas_json = ?, timestamp = ?');
+
+      $timestamp = date('Y-m-d H:i:s');
+
+      $stmt->execute([
+        $group_id,
+        $canvas_json,
+        $timestamp,
+        $canvas_json,
+        $timestamp
+      ]);
+
+      echo "Canvas saved for group $group_id\n";
+    } catch (\Exception $e) {
+      echo "Error saving canvas: {$e->getMessage()}\n";
+    }
+  }
+
+  public function onMessage(ConnectionInterface $from, $msg)
+  {
+    $data = json_decode($msg, true);
+    if ("drawing" === ($data['type_drawing'] ?? false)) {
+      $this->handleDrawing($data, $from);
+    } else {
+      $this->handleMessageChat($data, $from);
+    }
   }
 
   public function onClose(ConnectionInterface $conn)
   {
     $this->clients[$conn->resourceId] = null;
     unset($this->clients[$conn->resourceId]);
-    foreach ($this->mapped_chat_ids as $group) {
+    foreach ($this->mapped_chat_ids as $k => $group) {
       foreach ($group as $userId => $resourceId) {
         if ($resourceId == $conn->resourceId) {
-          unset($this->mapped_chat_ids[$group][$userId]);
-          echo "Chat id : {$userId} + {$group} disconnected from resourceId {$conn->resourceId}\n";
+          unset($this->mapped_chat_ids[$k][$userId]);
+          echo "Chat id : {$userId} + {$k} disconnected from resourceId {$conn->resourceId}\n";
           return;
         }
       }
