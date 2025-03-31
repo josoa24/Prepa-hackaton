@@ -187,7 +187,7 @@
             loading.style.display = 'block';
             try {
                 await new Promise(resolve => setTimeout(resolve, 2000)); // Add 2-second delay
-                const response = await fetch(`/fetchPublications?offset=${offset}&limit=${limit}`);
+                const response = await fetch(`<?= base_url('fetchPublications') ?>?offset=${offset}&limit=${limit}`);
                 const publications = await response.json();
 
                 if (!Array.isArray(publications)) {

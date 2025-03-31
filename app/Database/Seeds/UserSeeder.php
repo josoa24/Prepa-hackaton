@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
                 'country'        => 'France',
                 'email'          => 'marie.dupont@example.fr',
                 'phone_number'   => '+33 6 12 34 56 78',
-                'password'       => password_hash('marie2023', PASSWORD_BCRYPT),
+                'password'       => 'marie2023',
                 'profile_picture'=> 'marie.jpg'
             ],
             [
