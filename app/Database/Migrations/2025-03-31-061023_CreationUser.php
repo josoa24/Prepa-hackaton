@@ -49,6 +49,7 @@ class CreateIColabUser extends Migration
                 'constraint' => 255,
                 'null'       => false
             ],
+
             'profile_picture' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
@@ -58,6 +59,7 @@ class CreateIColabUser extends Migration
 
         $this->forge->addPrimaryKey('user_id');
         $this->forge->createTable('user');
+
     }
 
     public function down()

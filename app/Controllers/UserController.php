@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\Publication;
 
+
 class UserController extends BaseController
 {
     private $userModel;
