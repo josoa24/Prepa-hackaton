@@ -5,6 +5,8 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->get('/', 'UserController::login');
+$routes->post('validate_login', 'UserController::validate_login');
+$routes->get('/home', 'UserController::home');
 $routes->get('/publications', 'PublicationController::index');
 $routes->get('/fetchPublications', 'PublicationController::fetchPublications');
