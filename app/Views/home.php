@@ -56,6 +56,17 @@
 </head>
 
 <body data-base="<?= base_url() ?>">
+  <div class="pop-up-email" style="display: none;">
+    <div class="confirmation-container">
+      <div class="checkmark">✓</div>
+      <h1>Merci pour votre participation !</h1>
+
+      <p>Votre participation a bien été enregistrée. Vous recevrez une confirmation par email dans les prochaines minutes.</p>
+
+      <a href="" class="btn-retour">Retour à l'accueil</a>
+    </div>
+
+  </div>
   <div class="pop-up-container" style="display: none;">
     <div class="container-form">
       <h2>Collaborer avec tout le monde
@@ -173,8 +184,6 @@
     </div>
 
   </div>
-
-
   <div class="pop-up-container-filter" style="display: none;">
     <div class="categorie-container">
       <h2>Filtrer par catégorie
@@ -192,6 +201,7 @@
       </div>
     </div>
   </div>
+
   <header class="head-acceuil">
     <nav class="left-nav">
       <img src="<?= base_url('assets/images/LOGO-ICOLAB.png') ?>" alt="" class="logo-i-colab">
