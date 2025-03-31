@@ -1,25 +1,28 @@
-// const base_url = document.body.getAttribute("data-base");
-// function sendParticipation(id_publication, id_user) {
-//   const xhr = new XMLHttpRequest();
-//   const url = base_url + "participate";
+const base_url = document.body.getAttribute("data-base");
+function sendParticipation(id_publication, id_user) {
+  alert(this.innerHTML);
+//   this.innerHTML = "Participé";
+  //   const xhr = new XMLHttpRequest();
+  //   const url = base_url + "participate";
 
-//   xhr.open("POST", url, true);
-//   xhr.setRequestHeader("Content-Type", "application/json");
+  //   xhr.open("POST", url, true);
+  //   xhr.setRequestHeader("Content-Type", "application/json");
 
-//   xhr.onreadystatechange = function () {
-//     if (xhr.readyState === 4) {
-//       // Requête terminée
-//       if (xhr.status === 200) {
-//         console.log("Réponse du serveur :", JSON.parse(xhr.responseText));
-//       } else {
-//         console.error("Erreur :", xhr.status, xhr.statusText);
-//       }
-//     }
-//   };
+  //   xhr.onreadystatechange = function () {
+  //     if (xhr.readyState === 4) {
+  //       // Requête terminée
+  //       if (xhr.status === 200) {
+  //         console.log("Réponse du serveur :", JSON.parse(xhr.responseText));
+  //       } else {
+  //         console.error("Erreur :", xhr.status, xhr.statusText);
+  //       }
+  //     }
+  //   };
 
-//   const data = JSON.stringify({ id_publication, id_user });
-//   xhr.send(data);
-// }
+  //   const data = JSON.stringify({ id_publication, id_user });
+  //   xhr.send(data);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".type-publication button");
   const forms = document.querySelectorAll(".container-form form");

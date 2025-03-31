@@ -304,7 +304,7 @@
                             <div class="content-publication">
                                 <p>${publication.title}</p>
                                 <div class="btn">
-                                    <button>
+                                    <button onclick="sendParticipation(1,1)">
                                         Participer
                                     </button>
                                     <div class="right">
