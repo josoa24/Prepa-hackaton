@@ -105,6 +105,7 @@
                 <button type="submit">Soumettre</button>
             </form>
             <form class="evenement" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="typepub" value="1">
                 <div class="form-group">
                     <label for="titre">Titre</label>
                     <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
@@ -138,6 +139,7 @@
                 <button type="submit">Soumettre</button>
             </form>
             <form class="donation" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="typepub" value="2">
                 <div class="form-group">
                     <label for="titre">Titre</label>
                     <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
