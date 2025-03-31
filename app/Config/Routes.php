@@ -11,3 +11,4 @@ $routes->post('validate_login', 'UserController::validate_login');
 $routes->get('/home', 'UserController::home');
 $routes->get('/sendMail', 'EmailController::sendEmail');
 $routes->get('/fetchPublications', 'PublicationController::fetchPublications');
+$routes->post('/participate', 'ColaborationController::participate');

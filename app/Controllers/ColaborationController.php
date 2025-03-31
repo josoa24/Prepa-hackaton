@@ -12,15 +12,21 @@ class ColaborationController extends BaseController
     {
         $this->participation_model = new ParticipationModel();
     }
-
-    public  function participate()
+    
+    public function participate()
     {
-        $id_user = $this->request->getPost('id_user');
-        $id_publication = $this->request->getPost('id_publication');
-        $data = [
+
+        $id_user = intval($json->id_user);
+        $id_publication = intval($json->id_publication);
+
+        $this->participation_model->insert([
             'id_user' => $id_user,
             'id_publication' => $id_publication,
-        ];
-        $this->participation_model->insert($data);
+        ]);
+
+        return $this->response->setJSON([
+            'status' => 'added',
+            'message' => 'Participation enregistrée'
+        ]);
     }
 }

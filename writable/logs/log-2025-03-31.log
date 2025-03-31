@@ -45,3 +45,37 @@ in APPPATH\Models\UserModel.php on line 81.
  7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 DEBUG - 2025-03-31 15:32:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-03-31 16:25:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-31 16:47:08 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(25): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 17:08:14 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: participate]
+in SYSTEMPATH\Model.php on line 357.
+ 1 SYSTEMPATH\BaseModel.php(839): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH\Controllers\ColaborationController.php(52): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 17:16:08 --> ErrorException: Undefined variable $json
+[Method: POST, Route: participate]
+in APPPATH\Controllers\ColaborationController.php on line 19.
+ 1 APPPATH\Controllers\ColaborationController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\xampp\\htdocs\\Prepa-hackaton\\app\\Controllers\\ColaborationController.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ColaborationController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

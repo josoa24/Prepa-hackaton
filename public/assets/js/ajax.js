@@ -1,26 +1,17 @@
 const base_url = document.body.getAttribute("data-base");
-function sendParticipation(id_publication, id_user) {
-  alert(this.innerHTML);
-//   this.innerHTML = "Participé";
-  //   const xhr = new XMLHttpRequest();
-  //   const url = base_url + "participate";
+function sendParticipation(id1, id2) {
+  const button = document.getElementById(`btn-${id1}-${id2}`);
 
-  //   xhr.open("POST", url, true);
-  //   xhr.setRequestHeader("Content-Type", "application/json");
-
-  //   xhr.onreadystatechange = function () {
-  //     if (xhr.readyState === 4) {
-  //       // Requête terminée
-  //       if (xhr.status === 200) {
-  //         console.log("Réponse du serveur :", JSON.parse(xhr.responseText));
-  //       } else {
-  //         console.error("Erreur :", xhr.status, xhr.statusText);
-  //       }
-  //     }
-  //   };
-
-  //   const data = JSON.stringify({ id_publication, id_user });
-  //   xhr.send(data);
+  if (button.textContent === "Participer") {
+    button.textContent = "Annuler";
+    button.style.background = "#ee7272";
+    button.style.color = "white";
+  } else {
+    button.textContent = "Participer";
+    button.style.background = "";
+    button.style.color = "";
+  }
+  xhr.send(data);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
