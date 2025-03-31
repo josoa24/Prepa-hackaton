@@ -103,6 +103,7 @@ class PublicationController extends BaseController
                 'date_publication' => date('Y-m-d H:i:s'),
                 'date_evenement' => $date,
                 'type' => $type,
+                'forme' => 1,
             ];
             if ($publicationModel->insert($data)) {
                 $id_publication = $publicationModel->insertID();
@@ -126,6 +127,7 @@ class PublicationController extends BaseController
                 'date_publication' => date('Y-m-d H:i:s'),
                 'date_evenement' => null,
                 'type' => $type,
+                'forme' => 2,
             ];
             if ($publicationModel->insert($data)) {
                 $id_publication = $publicationModel->insertID();
@@ -156,6 +158,7 @@ class PublicationController extends BaseController
                 'date_publication' => date('Y-m-d H:i:s'),
                 'date_evenement' => null,
                 'type' => $type,
+                'forme' => 3,
             ];
             if ($publicationModel->insert($data)) {
                 $id_publication = $publicationModel->insertID();
