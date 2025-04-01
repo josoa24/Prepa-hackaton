@@ -59,5 +59,4 @@ class UserController extends BaseController
       'user' => $user,
     ]);
   }
-  
 }
