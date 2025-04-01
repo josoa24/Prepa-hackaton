@@ -243,4 +243,40 @@ class PublicationController extends BaseController
 
     return $this->response->setJSON(array_values($groupedPublications));
   }
+
+  public function fetchPublicationsByUser()
+  {
+    $offset = $this->request->getGet('offset') ?? 0;
+    $limit = $this->request->getGet('limit') ?? 12;
+    $id_user = session()->get('user_id') ?? 1;
+
+    $publicationModel = new Publication();
+    $publications = $publicationModel->getUserPublications($id_user, $offset, $limit);
+
+    // Group photos by publication
+    $groupedPublications = [];
+    foreach ($publications as $publication) {
+      $id = $publication['id'];
+      if (!isset($groupedPublications[$id])) {
+        $groupedPublications[$id] = $publication;
+        $groupedPublications[$id]['photos'] = [];
+      }
+      if ($publication['photo_link']) {
+        $groupedPublications[$id]['photos'][] = $publication['photo_link'];
+      }
+    }
+
+    // Ajout des informations utilisateur dans la réponse
+    foreach ($groupedPublications as &$publication) {
+      $publication['user'] = [
+        'first_name' => $publication['first_name'],
+        'last_name' => $publication['last_name'],
+        'email' => $publication['email'],
+        'profile_picture' => $publication['profile_picture'],
+      ];
+      unset($publication['first_name'], $publication['last_name'], $publication['email'], $publication['profile_picture']);
+    }
+
+    return $this->response->setJSON(array_values($groupedPublications));
+  }
 }
