@@ -16,3 +16,6 @@ $routes->get('/participate', 'ColaborationController::participate', ['filter' =>
 $routes->post('/storePublication', 'PublicationController::storePublication', ['filter' => 'auth']);
 $routes->get('/sendMail', 'EmailController::sendEmail', ['filter' => 'auth']);
 $routes->get('/search', 'PublicationController::search', ['filter' => 'auth']);
+$routes->get('/fetchPublicationsByUser', 'PublicationController::fetchPublicationsByUser', ['filter' => 'auth']);  
+$routes->get('/fetchPublicationBysUserSearch', 'PublicationController::getUserPublicationSearch', ['filter' => 'auth']);
+$routes->get('/user/publication','UserController::publication', ['filter' => 'auth']);

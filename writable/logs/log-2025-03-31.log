@@ -564,3 +564,127 @@ DEBUG - 2025-03-31 23:21:07 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-03-31 23:21:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-03-31 23:21:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-03-31 23:24:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:43:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-31 23:43:55 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' to database 'hackaton_icollab' in /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/BaseModel.php(609): CodeIgniter\Model->doFind()
+#6 /home/manjaka/Documents/hackaton/Prepa-hackaton/app/Controllers/UserController.php(35): CodeIgniter\BaseModel->find()
+#7 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(933): App\Controllers\UserController->home()
+#8 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#9 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/manjaka/Documents/hackaton/Prepa-hackaton/public/index.php(56): CodeIgniter\Boot::bootWeb()
+#13 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/rewrite.php(44): require_once('...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' to database 'hackaton_icollab' in /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/MySQLi/Connection.php:246
+Stack trace:
+#0 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/BaseModel.php(609): CodeIgniter\Model->doFind()
+#5 /home/manjaka/Documents/hackaton/Prepa-hackaton/app/Controllers/UserController.php(35): CodeIgniter\BaseModel->find()
+#6 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(933): App\Controllers\UserController->home()
+#7 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/manjaka/Documents/hackaton/Prepa-hackaton/public/index.php(56): CodeIgniter\Boot::bootWeb()
+#12 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/rewrite.php(44): require_once('...')
+#13 {main}
+CRITICAL - 2025-03-31 23:43:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' to database 'hackaton_icollab'
+[Method: GET, Route: home]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(609): CodeIgniter\Model->doFind()
+ 5 APPPATH/Controllers/UserController.php(35): CodeIgniter\BaseModel->find()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\UserController->home()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/manjaka/Documents/hackaton/Prepa-hackaton/public/index.php')
+DEBUG - 2025-03-31 23:44:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:44:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:44:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:44:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:45:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-31 23:45:03 --> mysqli_sql_exception: Table 'icollab.i_colab_colaboration' doesn't exist in /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/MySQLi/Connection.php:327
+Stack trace:
+#0 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/MySQLi/Connection.php(327): mysqli->query()
+#1 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Database/BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query()
+#4 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+#5 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/BaseModel.php(1157): CodeIgniter\Model->doDelete()
+#6 /home/manjaka/Documents/hackaton/Prepa-hackaton/app/Controllers/ColaborationController.php(59): CodeIgniter\BaseModel->delete()
+#7 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+#8 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#9 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/manjaka/Documents/hackaton/Prepa-hackaton/public/index.php(56): CodeIgniter\Boot::bootWeb()
+#13 /home/manjaka/Documents/hackaton/Prepa-hackaton/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2025-03-31 23:45:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'icollab.i_colab_colaboration' doesn't exist
+[Method: GET, Route: participate]
+in SYSTEMPATH/Database/BaseConnection.php on line 692.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH/Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+ 3 SYSTEMPATH/BaseModel.php(1157): CodeIgniter\Model->doDelete()
+ 4 APPPATH/Controllers/ColaborationController.php(59): CodeIgniter\BaseModel->delete()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 6 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/manjaka/Documents/hackaton/Prepa-hackaton/public/index.php')
+CRITICAL - 2025-03-31 23:45:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'icollab.i_colab_colaboration' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 332.
+ 1 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+ 5 SYSTEMPATH/BaseModel.php(1157): CodeIgniter\Model->doDelete()
+ 6 APPPATH/Controllers/ColaborationController.php(59): CodeIgniter\BaseModel->delete()
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 8 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/manjaka/Documents/hackaton/Prepa-hackaton/public/index.php')
+CRITICAL - 2025-03-31 23:45:03 --> [Caused by] mysqli_sql_exception: Table 'icollab.i_colab_colaboration' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 327.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(327): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(521): CodeIgniter\Database\BaseBuilder->delete()
+ 6 SYSTEMPATH/BaseModel.php(1157): CodeIgniter\Model->doDelete()
+ 7 APPPATH/Controllers/ColaborationController.php(59): CodeIgniter\BaseModel->delete()
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ColaborationController->participate()
+ 9 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH/rewrite.php(44): require_once('/home/manjaka/Documents/hackaton/Prepa-hackaton/public/index.php')
+DEBUG - 2025-03-31 23:45:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:45:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:45:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:45:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:45:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-31 23:45:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
