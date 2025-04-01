@@ -316,6 +316,7 @@
         publications.forEach(publication => {
           const div = document.createElement('div');
           div.className = 'pub-container';
+          div.dataset.category = publication.type;
           if (publication.forme == 2) {
             div.innerHTML = `
             <div class="top-image">

@@ -107,6 +107,7 @@ class PublicationController extends BaseController
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
+        $this->createRelationGroup($id_publication, $id_user);
         $photoModel = new Photo();
         $photoData = [
           'id_publication' => $id_publication,
@@ -130,6 +131,7 @@ class PublicationController extends BaseController
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
+        $this->createRelationGroup($id_publication, $id_user);
         $photoModel = new Photo();
         $photoData = [
           'id_publication' => $id_publication,
@@ -160,6 +162,7 @@ class PublicationController extends BaseController
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
+        $this->createRelationGroup($id_publication, $id_user);
         $photoModel = new Photo();
         $photoData = [
           'id_publication' => $id_publication,
@@ -173,6 +176,33 @@ class PublicationController extends BaseController
     }
 
     return redirect()->to('/home')->with('error', 'Publication failed');
+  }
+
+  private function createRelationGroup($id_publication, $id_user)
+  {
+    $group = new \App\Models\GroupModel();
+
+    $group->insert([
+      'name' => 'Publication_' . $id_publication,
+      'description' => 'Group for publication_' . $id_publication,
+      'created_at' => date('Y-m-d H:i:s'),
+    ]);
+
+    $id_group = $group->insertID();
+
+    $groupMember = new \App\Models\GroupMemberModel();
+    $groupMember->insert([
+      'user_id' => $id_user,
+      'group_id' => $id_group,
+      'joined_at' => date('Y-m-d H:i:s'),
+    ]);
+
+    $data = [
+      'publication_id' => $id_publication,
+      'group_id' => $id_group,
+    ];
+    $groupPublication = new \App\Models\PublicationGroup();
+    $groupPublication->insert($data);
   }
 
   public function search()

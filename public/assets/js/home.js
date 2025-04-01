@@ -81,9 +81,11 @@ document.getElementById("photo")?.addEventListener("change", function (event) {
 document.querySelectorAll(".categorie-btn button")?.forEach((button) => {
   button.addEventListener("click", function () {
     const category = this.getAttribute("data-category");
+
     document.querySelectorAll(".categorie-btn button").forEach((btn) => {
       btn.classList.remove("active");
     });
+
     this.classList.add("active");
     filterPublications(category);
   });
