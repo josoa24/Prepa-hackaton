@@ -24,7 +24,7 @@
       <button class="tool-button" id="rectangle-tool">Rectangle</button>
       <button class="tool-button" id="circle-tool">Ellipse</button>
       <button class="tool-button" id="text-tool">Text</button>
-      <input type="color" class="color-picker" id="color-picker" value="#ff0000">
+      <input type="color" class="color-picker" id="color-picker" value="#000">
       <button class="tool-button" id="clear-canvas">Clear</button>
     </div>
 
@@ -44,9 +44,9 @@
 
     <div class="chat-header">
       <div class="user-info">
-        <img src="" alt="" style="background-color: red;" class="profile-pic">
+        <img src="<?= base_url('uploaded/?file=' . urlencode($photos[0] ?? '')) ?>" alt="" class="profile-pic">
         <div>
-          <div class="user-name"><?= $group['name'] ?></div>
+          <div class="user-name"><?= $publication['title'] ?></div>
           <div class="user-status">Active now</div>
         </div>
       </div>
@@ -92,7 +92,7 @@
     const sendButton = document.getElementById('send');
 
     // Replace with your WebSocket server URL
-    const socket = new WebSocket('ws://localhost:8081');
+    const socket = new WebSocket('ws://192.168.1.145:8081');
 
     socket.addEventListener('open', () => {
       socket.send(JSON.stringify({

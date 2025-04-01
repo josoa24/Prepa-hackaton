@@ -86,7 +86,7 @@
           Donation
         </button>
       </div>
-      <form class="contribution" action="/storePublication" method="post" enctype="multipart/form-data">
+      <form class="contribution" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="typepub" value="3">
         <div class="form-group">
           <label for="titre">Titre</label>
@@ -116,7 +116,7 @@
         </div>
         <button type="submit">Soumettre</button>
       </form>
-      <form class="evenement" action="/storePublication" method="post" enctype="multipart/form-data">
+      <form class="evenement" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="titre">Titre</label>
           <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
@@ -149,7 +149,7 @@
         </div>
         <button type="submit">Soumettre</button>
       </form>
-      <form class="donation" action="/storePublication" method="post" enctype="multipart/form-data">
+      <form class="donation" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="titre">Titre</label>
           <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>

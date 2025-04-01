@@ -56,7 +56,7 @@ class PublicationController extends BaseController
     $description = $this->request->getPost('description');
     $type = $this->request->getPost('categorie');
     $date = $this->request->getPost('date');
-    $id_user = $this->request->getPost('id_user') ?? 1;
+    $id_user = session()->get('user_id') ?? 1;
     $maxdonation = $this->request->getPost('maxdonation') ?? 0;
 
     // Handle photo upload

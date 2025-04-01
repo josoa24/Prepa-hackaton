@@ -493,10 +493,6 @@ document.addEventListener("DOMContentLoaded", function () {
     saveCanvas();
   });
 
-  setInterval(() => {
-    saveCanvas();
-  }, 5000);
-
   document.addEventListener("keydown", function (e) {
     if (
       e.ctrlKey &&

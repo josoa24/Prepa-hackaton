@@ -1,34 +1,7 @@
 const base_url = document.body.getAttribute("data-base");
 
 function sendParticipation(id1, id2) {
-  const button = document.getElementById(`btn-${id1}-${id2}`);
-
-  const action = button.textContent.trim() === "Participer" ? "join" : "leave";
-  fetch(
-    `${base_url}participate?id_publication=${id1}&id_user=${id2}&action=${action}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success) {
-        if (action === "join") {
-          const popupEmail = document.querySelector(".pop-up-email");
-          popupEmail.style.display = "flex";
-          button.textContent = "Annuler";
-          button.style.background = "#ee7272";
-          button.style.color = "white";
-        } else {
-          button.textContent = "Participer";
-          button.style.background = "";
-          button.style.color = "";
-        }
-      } else {
-        alert("Une erreur est survenue !");
-      }
-    })
-    .catch((error) => {
-      console.error("Erreur :", error);
-      alert("Erreur de connexion au serveur !");
-    });
+  location.href = `${base_url}/participate/?id_publication=${id1}&id_user=${id2}`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -25,7 +25,7 @@ class ChatServer implements MessageComponentInterface
   {
     $this->clients = [];
     $this->mapped_chat_ids = [];
-    $this->db = new PDO('mysql:host=localhost;dbname=i_colab', 'root', '');
+    $this->db = new PDO('mysql:host=localhost;dbname=hackaton_icollab', 'root', '');
   }
 
   public function onOpen(ConnectionInterface $conn)
