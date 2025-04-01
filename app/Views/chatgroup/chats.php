@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Liste de Chats</title>
   <link rel="stylesheet" href="<?= base_url('assets/css/liste_chat.css') ?>" />
-  <link href="https://cdn.jsdelivr.net/npm/tldraw@3.11.0/tldraw.min.css" crossorigin rel="stylesheet">
   <style>
     body {
       background: url('<?= base_url('assets/img/background.jpg') ?>') no-repeat center center/cover;

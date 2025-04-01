@@ -20,7 +20,7 @@ class PublicationController extends BaseController
     $limit = $this->request->getGet('limit') ?? 12;
 
     $publicationModel = new Publication();
-    $publications = $publicationModel->getPublicationsWithPhotosAndStatus($offset, $limit);
+    $publications = $publicationModel->getPublicationsWithPhotosAndStatus($offset, $limit, session()->get('user_id'));
 
     // Group photos by publication
     $groupedPublications = [];
@@ -57,7 +57,7 @@ class PublicationController extends BaseController
     $type = $this->request->getPost('categorie');
     $date = $this->request->getPost('date');
     $id_user = session()->get('user_id') ?? 1;
-    $maxdonation = $this->request->getPost('maxdonation') ?? 0;
+    $maxdonation = $this->request->getPost('montant') ?? 0;
 
     // Handle photo upload
     $photoFile = $this->request->getFile('photo');
@@ -138,13 +138,14 @@ class PublicationController extends BaseController
           'lien' => $photoPath,
         ];
         $photoModel->insert($photoData);
-        $donationModel = new Don();
-        $donationData = [
+        $progressionModel = new \App\Models\Progression();
+        $progressionData = [
           'id_publication' => $id_publication,
-          'montant' => $maxdonation,
-          'date_don' => date('Y-m-d H:i:s'),
+          'status' => 0,
+          'but' => $maxdonation,
+          'created_at' => date('Y-m-d H:i:s'),
         ];
-        $donationModel->insert($donationData);
+        $progressionModel->insert($progressionData);
         return redirect()->to('/home');
       }
     } elseif ($typepub == 3) {

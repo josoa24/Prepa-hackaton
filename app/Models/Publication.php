@@ -44,7 +44,7 @@ class Publication extends Model
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
 
-  public function getPublicationsWithPhotosAndStatus(int $offset, int $limit)
+  public function getPublicationsWithPhotosAndStatus(int $offset, int $limit, $idUser)
   {
     $query = $this->select('Publication.*, photos.lien AS photo_link, 
                                 user.first_name, user.last_name, user.email, user.profile_picture,
@@ -58,6 +58,11 @@ class Publication extends Model
       ->join('progressions', 'progressions.id_publication = Publication.id', 'left')
       ->join('dons', 'dons.id_publication = Publication.id', 'left')
       ->join('user', 'user.user_id = Publication.id_user', 'left') // Ajout de la jointure avec la table user
+      ->whereNotIn('Publication.id', function ($builder) use ($idUser) {
+        return $builder->select('id_publication')
+          ->from('i_colab_colaboration')
+          ->where('id_user', $idUser);
+      })
       ->groupBy('Publication.id, progressions.but, progressions.status, user.user_id')
       ->orderBy('Publication.created_at', 'DESC');
 
@@ -110,6 +115,11 @@ class Publication extends Model
       ->join('dons', 'dons.id_publication = Publication.id', 'left')
       ->join('user', 'user.user_id = Publication.id_user', 'left') // Ajout de la jointure avec la table user
       ->where('Publication.id_user', $user_id)
+      ->orWhereIn('Publication.id', function ($builder) use ($user_id) {
+        return $builder->select('id_publication')
+          ->from('i_colab_colaboration')
+          ->where('id_user', $user_id);
+      })
       ->groupBy('Publication.id, progressions.but, progressions.status, user.user_id')
       ->orderBy('Publication.created_at', 'DESC');
 
