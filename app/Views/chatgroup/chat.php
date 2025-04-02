@@ -6,13 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collab de <?= $group['name'] ?></title>
 
+  <link rel="icon" type="image/png" href="<?= base_url('assets/icons/favicon-96x96.png') ?>" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="<?= base_url('assets/icons/favicon.svg') ?>" />
+  <link rel="shortcut icon" href="<?= base_url('assets/icons/favicon.ico') ?>" />
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/icons/apple-touch-icon.png') ?>" />
+  <link rel="manifest" href="<?= base_url('assets/icons/site.webmanifest') ?>" />
   <link rel="stylesheet" href="<?= base_url('assets/css/chat.css') ?>">
 </head>
 
 <body>
   <div class="canvas-container">
     <div class="canvas-header">
-      <div class="header-title">Drawing Canvas</div>
+      <div class="header-title">
+        <img src="<?= base_url('assets/images/LOGO-ICOLAB.png') ?>" alt="" class="logo-i-colab">
+      </div>
       <div class="header-actions">
         <button class="tool-button">Save (CTRL + S)</button>
       </div>
@@ -72,7 +79,7 @@
 
     <div class="chat-input">
       <input type="text" class="message-input" placeholder="Aa" id="message">
-      <button class="send-button" id="send">
+      <button class="send-button" id="send" style="display: contents;">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="17px" viewBox="0 0 256 256" xml:space="preserve">
           <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; 
             stroke-linecap: butt; stroke-linejoin: miter; 
@@ -92,7 +99,7 @@
     const sendButton = document.getElementById('send');
 
     // Replace with your WebSocket server URL
-    const socket = new WebSocket('ws://192.168.1.145:8081');
+    const socket = new WebSocket('ws://<?= IP ?>:8081');
 
     socket.addEventListener('open', () => {
       socket.send(JSON.stringify({

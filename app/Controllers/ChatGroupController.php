@@ -20,9 +20,27 @@ class ChatGroupController extends BaseController
       return redirect()->to('/login');
     }
 
-    $groups = (new UserModel())->getChatGroups($user_id);
+    $user = (new UserModel())->find($user_id);
 
-    return view('chatgroup/chats.php', compact('groups'));
+    $groups = [];
+    foreach ((new UserModel())->getChatGroups($user_id) as $group) {
+      $groups[$group['id']] = $group;
+    }
+
+    $a = (new PublicationGroup());
+    if (count($groups) > 0)
+      $a = $a->whereIn('group_id', array_keys($groups));
+    $publicationGroupes = $a->findAll();
+    $publications = [];
+
+    foreach ((new \App\Models\Publication())->findAll() as $publication) {
+      $publications[$publication['id']] = $publication;
+    }
+
+    foreach ($publicationGroupes as $publicationGroupe)
+      $groups[$publicationGroupe['group_id']]['publication'] = $publications[$publicationGroupe['publication_id']];
+
+    return view('chatgroup/chats.php', compact('groups', 'user'));
   }
 
   public function list($id)
@@ -63,7 +81,7 @@ class ChatGroupController extends BaseController
     $publication = (new PublicationGroup())
       ->where('group_id', $id)
       ->first();
-    
+
     if ($publication) {
       $publication = (new \App\Models\Publication())
         ->find($publication['publication_id']);

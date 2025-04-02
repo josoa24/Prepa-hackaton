@@ -6,17 +6,17 @@ use CodeIgniter\Config\BaseConfig;
 
 class App extends BaseConfig
 {
-    /**
-     * --------------------------------------------------------------------------
-     * Base Site URL
-     * --------------------------------------------------------------------------
-     *
-     * URL to your CodeIgniter root. Typically, this will be your base URL,
-     * WITH a trailing slash:
-     *
-     * E.g., http://example.com/
-     */
-    public string $baseURL = 'http://192.168.1.145/Prepa-hackaton/public';
+  /**
+   * --------------------------------------------------------------------------
+   * Base Site URL
+   * --------------------------------------------------------------------------
+   *
+   * URL to your CodeIgniter root. Typically, this will be your base URL,
+   * WITH a trailing slash:
+   *
+   * E.g., http://example.com/
+   */
+  public string $baseURL = 'http://' . IP . '/Prepa-hackaton/public';
 
   /**
    * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

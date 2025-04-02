@@ -13,3 +13,5 @@
  *
  * @see: https://codeigniter.com/user_guide/extending/common.html
  */
+
+define('IP', '192.168.88.219');

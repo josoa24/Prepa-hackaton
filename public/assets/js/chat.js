@@ -491,6 +491,10 @@ document.addEventListener("DOMContentLoaded", function () {
   saveButton.addEventListener("click", function () {
     showModal();
     saveCanvas();
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   });
 
   document.addEventListener("keydown", function (e) {
@@ -503,6 +507,10 @@ document.addEventListener("DOMContentLoaded", function () {
       showModal();
       e.preventDefault();
       saveCanvas();
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     }
   });
 });
