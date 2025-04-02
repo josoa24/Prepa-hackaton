@@ -56,11 +56,6 @@
 </head>
 
 <body data-base="<?= base_url() ?>">
-  <!-- Loader -->
-
-  <div id="loader"></div>
-
-  <!-- Loader -->
   <div class="pop-up-email" style="display: none;">
     <div class="confirmation-container">
       <div class="checkmark">✓</div>
@@ -91,7 +86,7 @@
           Donation
         </button>
       </div>
-      <form class="contribution" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
+      <form class="contribution" action="/storePublication" method="post" enctype="multipart/form-data">
         <input type="hidden" name="typepub" value="3">
         <div class="form-group">
           <label for="titre">Titre</label>
@@ -121,8 +116,7 @@
         </div>
         <button type="submit">Soumettre</button>
       </form>
-      <form class="evenement" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="typepub" value="1">
+      <form class="evenement" action="/storePublication" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="titre">Titre</label>
           <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
@@ -151,12 +145,11 @@
         </div>
         <div class="form-group">
           <label for="date">Date</label>
-          <input type="datetime-local" id="date" name="date" required>
+          <input type="date" id="date" name="date" required>
         </div>
         <button type="submit">Soumettre</button>
       </form>
-      <form class="donation" action="<?= base_url('storePublication') ?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="typepub" value="2">
+      <form class="donation" action="/storePublication" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="titre">Titre</label>
           <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
@@ -184,8 +177,8 @@
           <img id="imagePreview" src="" alt="Aperçu de l'image" style="display: none;">
         </div>
         <div class="form-group">
-          <label for="montant">Montant</label>
-          <input type="number" id="montant" name="montant" required>
+          <label for="date">Montant</label>
+          <input type="number" id="date" name="date" required>
         </div>
         <button type="submit">Soumettre</button>
       </form>
@@ -222,7 +215,6 @@
       </div>
     </nav>
     <aside class="user-tools">
-      <button class="publish">Publier</button>
       <button class="notif">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
           <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z" />
@@ -243,7 +235,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
               <path d="M160-120q-33 0-56.5-23.5T80-200v-480h80v480h600v80H160Zm160-160q-33 0-56.5-23.5T240-360v-480h680v480q0 33-23.5 56.5T840-280H320Zm0-80h520v-400H320v400Zm80-120h160v-200H400v200Zm200 0h160v-80H600v80Zm0-120h160v-80H600v80ZM320-360v-400 400Z" />
             </svg>
-            <a href="<?= base_url('/user/publication') ?>">Mes publications</a>
+            <a href="<?= base_url('/home') ?>">Publications</a>
           </button>
           <button onclick="location.href='<?= base_url('logout') ?>'">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
@@ -279,8 +271,8 @@
     const container = document.getElementById('publications');
     const loading = document.getElementById('loading');
     let isLoading = false; // Flag to prevent multiple fetch requests
-    const searchURL = '<?= base_url('search') ?>';
-    const normalURL = '<?= base_url('fetchPublications') ?>';
+    const searchURL = '<?= base_url('fetchPublicationBysUserSearch') ?>';
+    const normalURL = '<?= base_url('fetchPublicationsByUser') ?>';
     let urlToUse = normalURL;
 
     function changeURL(newURL) {
@@ -309,7 +301,7 @@
       loading.style.display = 'block';
 
       try {
-        await new Promise(resolve => setTimeout(resolve, 700)); // Add 2-second delay
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Add 2-second delay
         const response = await fetch(`${urlToUse}&offset=${offset}&limit=${limit}`);
         const publications = await response.json();
 
@@ -324,6 +316,7 @@
           const div = document.createElement('div');
           div.className = 'pub-container';
           div.dataset.category = publication.type;
+          
           if (publication.forme == 2) {
             div.innerHTML = `
             <div class="top-image">
@@ -331,13 +324,13 @@
                     <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
                 </svg>
                 ${publication.photos && publication.photos.length > 0 
-                    ? `<img src="<?= base_url('uploaded?file=') ?>${encodeURIComponent(publication.photos[0])}" alt="Photo" class="publication">` 
+                    ? `<img src="<?= base_url('uploaded/?file=') ?>${encodeURIComponent(publication.photos[0])}" alt="Photo" class="publication">` 
                     : `<img src="<?= base_url('assets/images/land.jpg') ?>" alt="Default Image" class="publication">`}
             </div>
             <div class="bottom-pub">
                 <div class="head-section">
                     <nav class="left-user">
-                        <img class="publisher" src="<?= base_url('assets/images/') ?>${encodeURIComponent(publication.user.profile_picture)}" alt="">
+                        <img class="publisher" src="<?= base_url() ?>${publication.photo_link}" alt="">
                         <h2>${publication.user.first_name} ${publication.user.last_name}</h2>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
                             <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0-83-31.5-156T763-197q-54-54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
@@ -351,7 +344,7 @@
                     <p>${publication.title}</p>
                     <p style="font-size: 12px">${publication.content}</p>
                     <div class="btn">
-                        <button id="btn-${publication.id}-<?= $user['user_id'] ?>" ${Math.round(publication.completion_percentage || 0) >= 100 ? "disabled" : `onclick=\"sendParticipationDonner(${publication.id},<?= $user['user_id'] ?>, 'don')\"`}>
+                        <button id="btn-${publication.id}-<?= $user['user_id'] ?>" onclick="sendParticipation(${publication.id},<?= $user['user_id'] ?>)">
                             Donner
                         </button>
                         <div class="right">
@@ -370,13 +363,13 @@
                     <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
                 </svg>
                 ${publication.photos && publication.photos.length > 0 
-                    ? `<img src="<?= base_url('uploaded?file=') ?>${encodeURIComponent(publication.photos[0])}" alt="Photo" class="publication">` 
+                    ? `<img src="<?= base_url('uploaded/?file=') ?>${encodeURIComponent(publication.photos[0])}" alt="Photo" class="publication">` 
                     : `<img src="<?= base_url('assets/images/land.jpg') ?>" alt="Default Image" class="publication">`}
             </div>
             <div class="bottom-pub">
                 <div class="head-section">
                     <nav class="left-user">
-                        <img class="publisher" src="<?= base_url('assets/images/') ?>${encodeURIComponent(publication.user.profile_picture)}" alt="">
+                        <img class="publisher" src="<?= base_url() ?>${publication.photo_link}" alt="">
                         <h2>${publication.user.first_name} ${publication.user.last_name}</h2>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFF">
                             <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0-83-31.5-156T763-197q-54-54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
@@ -390,7 +383,7 @@
                     <p>${publication.title}</p>
                     <p style="font-size: 12px">${publication.content}</p>
                     <div class="btn">
-                        <button id="btn-${publication.id}-<?= $user['user_id'] ?>" onclick="sendParticipationDonner(${publication.id},<?= $user['user_id'] ?>,'evenement')">
+                        <button id="btn-${publication.id}-<?= $user['user_id'] ?>" onclick="sendParticipation(${publication.id},<?= $user['user_id'] ?>)">
                             Participer
                         </button>
                         <div class="right">
@@ -407,7 +400,7 @@
                     <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
                 </svg>
                 ${publication.photos && publication.photos.length > 0 
-                    ? `<img src="<?= base_url('uploaded?file=') ?>${encodeURIComponent(publication.photos[0])}" alt="Photo" class="publication">` 
+                    ? `<img src="<?= base_url('uploaded/?file=') ?>${encodeURIComponent(publication.photos[0])}" alt="Photo" class="publication">` 
                     : `<img src="<?= base_url('assets/images/land.jpg') ?>" alt="Default Image" class="publication">`}
             </div>
             <div class="bottom-pub">

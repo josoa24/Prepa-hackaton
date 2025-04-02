@@ -9,10 +9,10 @@ class DataSeeder extends Seeder
     public function run()
     {
         $this->call('UserSeeder');
-        $this->call('PublicationSeeder');
-        $this->call('ProgressionSeeder');
+        // $this->call('PublicationSeeder');
+        // $this->call('ProgressionSeeder');
         $this->call('GroupSeeder'); // Fixed typo
         $this->call('GroupMemberSeeder'); // Added
-        $this->call('DonSeeder'); // Added
+        // $this->call('DonSeeder'); // Added
     }
 }

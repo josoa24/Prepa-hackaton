@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\GroupMemberModel;
 use App\Models\GroupModel;
 use App\Models\MessageModel;
+use App\Models\Photo;
+use App\Models\PublicationGroup;
 use App\Models\UserModel;
 
 class ChatGroupController extends BaseController
@@ -18,9 +20,27 @@ class ChatGroupController extends BaseController
       return redirect()->to('/login');
     }
 
-    $groups = (new UserModel())->getChatGroups($user_id);
+    $user = (new UserModel())->find($user_id);
 
-    return view('chatgroup/chats.php', compact('groups'));
+    $groups = [];
+    foreach ((new UserModel())->getChatGroups($user_id) as $group) {
+      $groups[$group['id']] = $group;
+    }
+
+    $a = (new PublicationGroup());
+    if (count($groups) > 0)
+      $a = $a->whereIn('group_id', array_keys($groups));
+    $publicationGroupes = $a->findAll();
+    $publications = [];
+
+    foreach ((new \App\Models\Publication())->findAll() as $publication) {
+      $publications[$publication['id']] = $publication;
+    }
+
+    foreach ($publicationGroupes as $publicationGroupe)
+      $groups[$publicationGroupe['group_id']]['publication'] = $publications[$publicationGroupe['publication_id']];
+
+    return view('chatgroup/chats.php', compact('groups', 'user'));
   }
 
   public function list($id)
@@ -58,6 +78,18 @@ class ChatGroupController extends BaseController
     $canvas_json = $result['canvas_json'] ?? '{}';
     $canvas_json = json_decode($canvas_json, true);
 
-    return view('chatgroup/chat.php', compact('group', 'users', 'user', 'messages', 'canvas_json'));
+    $publication = (new PublicationGroup())
+      ->where('group_id', $id)
+      ->first();
+
+    if ($publication) {
+      $publication = (new \App\Models\Publication())
+        ->find($publication['publication_id']);
+    }
+
+    $photos = (new Photo())->where('id_publication', $publication['id'])->findAll();
+    $photos = array_map(fn($e) => $e['lien'], $photos);
+
+    return view('chatgroup/chat.php', compact('group', 'users', 'user', 'messages', 'canvas_json', 'publication', 'photos'));
   }
 }

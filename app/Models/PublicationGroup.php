@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Don extends Model
+class PublicationGroup extends Model
 {
-  protected $table            = 'dons';
+  protected $table            = 'publication_groups';
   protected $primaryKey       = 'id';
   protected $useAutoIncrement = true;
   protected $returnType       = 'array';

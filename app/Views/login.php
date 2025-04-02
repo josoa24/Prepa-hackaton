@@ -31,7 +31,7 @@
           name="email"
           id="email"
           class="input-field"
-          placeholder="user@icolab.com" value="john.doe@example.com"
+          placeholder="user@icolab.com" value="razherana@gmail.com"
           required>
       </div>
 
@@ -43,7 +43,6 @@
             class="input-field"
             placeholder="••••••••"
             name="password"
-            value="password123"
             required>
           <i class="fas fa-eye show-password" onclick="togglePassword()"></i>
         </div>

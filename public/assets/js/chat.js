@@ -491,11 +491,11 @@ document.addEventListener("DOMContentLoaded", function () {
   saveButton.addEventListener("click", function () {
     showModal();
     saveCanvas();
-  });
 
-  setInterval(() => {
-    saveCanvas();
-  }, 5000);
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  });
 
   document.addEventListener("keydown", function (e) {
     if (
@@ -507,6 +507,10 @@ document.addEventListener("DOMContentLoaded", function () {
       showModal();
       e.preventDefault();
       saveCanvas();
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     }
   });
 });

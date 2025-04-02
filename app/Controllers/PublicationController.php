@@ -20,7 +20,7 @@ class PublicationController extends BaseController
     $limit = $this->request->getGet('limit') ?? 12;
 
     $publicationModel = new Publication();
-    $publications = $publicationModel->getPublicationsWithPhotosAndStatus($offset, $limit);
+    $publications = $publicationModel->getPublicationsWithPhotosAndStatus($offset, $limit, session()->get('user_id'));
 
     // Group photos by publication
     $groupedPublications = [];
@@ -56,8 +56,8 @@ class PublicationController extends BaseController
     $description = $this->request->getPost('description');
     $type = $this->request->getPost('categorie');
     $date = $this->request->getPost('date');
-    $id_user = $this->request->getPost('id_user') ?? 1;
-    $maxdonation = $this->request->getPost('maxdonation') ?? 0;
+    $id_user = session()->get('user_id') ?? 1;
+    $maxdonation = $this->request->getPost('montant') ?? 0;
 
     // Handle photo upload
     $photoFile = $this->request->getFile('photo');
@@ -107,6 +107,7 @@ class PublicationController extends BaseController
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
+        $this->createRelationGroup($id_publication, $id_user);
         $photoModel = new Photo();
         $photoData = [
           'id_publication' => $id_publication,
@@ -130,19 +131,21 @@ class PublicationController extends BaseController
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
+        $this->createRelationGroup($id_publication, $id_user);
         $photoModel = new Photo();
         $photoData = [
           'id_publication' => $id_publication,
           'lien' => $photoPath,
         ];
         $photoModel->insert($photoData);
-        $donationModel = new Don();
-        $donationData = [
+        $progressionModel = new \App\Models\Progression();
+        $progressionData = [
           'id_publication' => $id_publication,
-          'montant' => $maxdonation,
-          'date_don' => date('Y-m-d H:i:s'),
+          'status' => 0,
+          'but' => $maxdonation,
+          'created_at' => date('Y-m-d H:i:s'),
         ];
-        $donationModel->insert($donationData);
+        $progressionModel->insert($progressionData);
         return redirect()->to('/home');
       }
     } elseif ($typepub == 3) {
@@ -160,6 +163,7 @@ class PublicationController extends BaseController
       ];
       if ($publicationModel->insert($data)) {
         $id_publication = $publicationModel->insertID();
+        $this->createRelationGroup($id_publication, $id_user);
         $photoModel = new Photo();
         $photoData = [
           'id_publication' => $id_publication,
@@ -175,6 +179,33 @@ class PublicationController extends BaseController
     return redirect()->to('/home')->with('error', 'Publication failed');
   }
 
+  private function createRelationGroup($id_publication, $id_user)
+  {
+    $group = new \App\Models\GroupModel();
+
+    $group->insert([
+      'name' => 'Publication_' . $id_publication,
+      'description' => 'Group for publication_' . $id_publication,
+      'created_at' => date('Y-m-d H:i:s'),
+    ]);
+
+    $id_group = $group->insertID();
+
+    $groupMember = new \App\Models\GroupMemberModel();
+    $groupMember->insert([
+      'user_id' => $id_user,
+      'group_id' => $id_group,
+      'joined_at' => date('Y-m-d H:i:s'),
+    ]);
+
+    $data = [
+      'publication_id' => $id_publication,
+      'group_id' => $id_group,
+    ];
+    $groupPublication = new \App\Models\PublicationGroup();
+    $groupPublication->insert($data);
+  }
+
   public function search()
   {
     $search = $this->request->getGet('search') ?? false;
@@ -188,6 +219,42 @@ class PublicationController extends BaseController
     $publicationModel = new Publication();
     $publications = $publicationModel->getPublicationsWithPhotosAndStatusSearch($page, $limit, $search);
 
+    $groupedPublications = [];
+    foreach ($publications as $publication) {
+      $id = $publication['id'];
+      if (!isset($groupedPublications[$id])) {
+        $groupedPublications[$id] = $publication;
+        $groupedPublications[$id]['photos'] = [];
+      }
+      if ($publication['photo_link']) {
+        $groupedPublications[$id]['photos'][] = $publication['photo_link'];
+      }
+    }
+
+    // Ajout des informations utilisateur dans la réponse
+    foreach ($groupedPublications as &$publication) {
+      $publication['user'] = [
+        'first_name' => $publication['first_name'],
+        'last_name' => $publication['last_name'],
+        'email' => $publication['email'],
+        'profile_picture' => $publication['profile_picture'],
+      ];
+      unset($publication['first_name'], $publication['last_name'], $publication['email'], $publication['profile_picture']);
+    }
+
+    return $this->response->setJSON(array_values($groupedPublications));
+  }
+
+  public function fetchPublicationsByUser()
+  {
+    $offset = $this->request->getGet('offset') ?? 0;
+    $limit = $this->request->getGet('limit') ?? 12;
+    $id_user = session()->get('user_id') ?? 1;
+
+    $publicationModel = new Publication();
+    $publications = $publicationModel->getUserPublications($id_user, $offset, $limit);
+
+    // Group photos by publication
     $groupedPublications = [];
     foreach ($publications as $publication) {
       $id = $publication['id'];
